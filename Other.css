@@ -1,0 +1,75 @@
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.text-top {
+  font-size: 20px;
+  color: #888;
+  padding-bottom: 20px;
+}
+
+.other-fade {
+    background-image: linear-gradient(to right, #7EC8E3, #A4D7A7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.other-div {
+    display: flex;
+    height: 65px;
+    padding-right: 30px;
+    width: 550px;
+    color: black;
+    border: 1px solid #7EC8E3;
+    border-radius: 15px;
+    font-size: 18px;
+    align-items: center;
+    justify-content: right;
+}
+
+.another-div {
+    margin-top: 30px;
+    display: block;
+    height: 430px;
+    padding-left: 30px;
+    width: 550px;
+    color: black;
+    border: 2px solid silver;
+    border-radius: 15px;
+    justify-content: left;
+    text-align: left;
+}
+
+.password {
+    align-items: center;
+    display: flex;
+    height: 50px;
+    padding-left: 20px;
+    width: 500px;
+    color: #888;
+    border: 1px solid gray;
+    border-radius: 15px;
+    justify-content: left;
+    text-align: left;
+    font-size: 18px;
+}
+
+.join {
+    display: flex; /* Enables Flexbox layout */
+    height: 50px;
+    width: 520px;
+    color: black;
+    border: 2px solid #7EC8E3;
+    border-radius: 15px;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to right, #7EC8E3, #A4D7A7);
+    margin-top: 30px;
+}
+
+.login {
+    font-size: 30px;
+}

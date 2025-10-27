@@ -1,0 +1,73 @@
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.read-the-docs {
+  font-size: 20px;
+  color: #888;
+  padding-bottom: 50px;
+}
+
+.position- {
+    float: left;
+    margin-right: 25px;
+    margin-top: 100px;
+    padding-left: 20px; /* Space from the left edge */
+    padding-right: 20px;
+    padding-bottom: 20px;
+    display: flex; /* Enables Flexbox layout */
+    height: 150px;
+    width: 250px;
+    border: 2px solid lightgray;
+    border-radius: 15px;
+    color: black;
+    border-style: solid; /* A border-style must be set for the border to be visible */
+    border-color: #A4D7A7;
+    font-size: 20px;
+}
+
+.fade-test {
+    text-decoration-line: underline;
+    text-decoration-style: line;
+    text-decoration-color: #A4D7A7;
+    font-size: 20px;
+    background-image: linear-gradient(to right, #7EC8E3, #A4D7A7); /* Define your gradient colors and direction */
+    -webkit-background-clip: text; /* Clip the background to the shape of the text */
+    background-clip: text;
+    color: transparent; /* Make the text transparent so the background gradient shows through */
+}
+
+.text-test {
+    color: black;
+    text-align: left;
+    font-size: 20px;
+}
+
+.buttom-div {
+    margin-left: 250px;
+    float: left;
+    display: flex; /* Enables Flexbox layout */
+    height: 50px;
+    width: 250px;
+    color: black;
+    border: 2px solid #7EC8E3;
+    border-radius: 15px;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to right, #7EC8E3, #A4D7A7);
+}
+
+.about {
+    margin-right: 250px;
+    display: flex; /* Enables Flexbox layout */
+    height: 50px;
+    width: 175px;
+    color: black;
+    border: 2px solid #7EC8E3;
+    border-radius: 15px;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+}
