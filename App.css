@@ -29,9 +29,6 @@
 }
 
 .fade-test {
-    text-decoration-line: underline;
-    text-decoration-style: line;
-    text-decoration-color: #A4D7A7;
     font-size: 20px;
     background-image: linear-gradient(to right, #7EC8E3, #A4D7A7); /* Define your gradient colors and direction */
     -webkit-background-clip: text; /* Clip the background to the shape of the text */
