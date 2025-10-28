@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import './App.css'
 import './Other.css'
+import logo from './logo.png';
 function App() {
   const [isok, setx] = useState(true)
   if (isok)
   return (
     <>
         <div className='fade-test'>
-        <h1>Capivac</h1></div>
+        <h1><img src={logo} width='125' height='125' className='one-image'>
+        </img>Capivac</h1></div>
         <p className="read-the-docs">
           <strong>Sistema de gerenciamento de vacinação do Recife
           <br></br>Simples, rápido e seguro</strong></p>
@@ -27,9 +29,10 @@ function App() {
   if (!isok)
   return (
     <>
-        <h1 className='other-fade'>Capivac</h1>
-        <p className='text-top'>
-          <strong>Acesse sua conta</strong></p>
+        <div className='other-fade'>
+        <h1><img src={logo} width='125' height='125' className='other-image'>
+        </img>Capivac</h1></div><p className='text-top'>
+        <strong>Acesse sua conta</strong></p>
         <div className='other-div'><p>
         <img src='https://www.svgrepo.com/show/24584/info-icon.svg' width="20" height="20">
         </img>&nbsp;&nbsp;&nbsp;Use seu CPF e senha do Conecta Recife para acessar o sistema</p></div>
