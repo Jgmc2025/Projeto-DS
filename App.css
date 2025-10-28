@@ -11,6 +11,7 @@
 
 .position- {
     float: left;
+    margin-bottom: 30px;
     margin-right: 25px;
     margin-top: 100px;
     padding-left: 20px; /* Space from the left edge */
@@ -70,4 +71,9 @@
     font-size: 20px;
     align-items: center;
     justify-content: center;
+}
+
+.one-image {
+    display: block;
+    margin: 0 auto;
 }
