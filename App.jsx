@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import './App.css'
 import './Other.css'
+import './qrcode.css'
 import logo from './logo.png';
 function App() {
   const [isok, setx] = useState(true)
+  const [other, sety] = useState(true)
+  const [side, setz] = useState(true)
   if (isok)
   return (
     <>
@@ -26,7 +29,7 @@ function App() {
         </img><b>&nbsp;Acessível</b><br></br>Interface intuitiva e aberta a todos os cidadãos</p></div>
     </>
   )
-  if (!isok)
+  if (!isok && other)
   return (
     <>
         <div className='other-fade'>
@@ -39,9 +42,28 @@ function App() {
         <div className='another-div'><h2 className='login'>Login</h2><h3>CPF</h3>
         <div className='password'>000.000.000-00</div><h3>Senha</h3>
         <div className='password'>Digite sua senha</div>
-        <button class='join' onClick={() => setx(true)}>Entrar</button></div>
+        <button class='join' onClick={() => sety(false)}>Entrar</button></div>
     </>
-  )}
+  )
+  if (!isok && !other && side)
+  return(
+    <>
+        <div className='top-top-div'><h2>&nbsp;&nbsp;&nbsp;&nbsp;QR Code</h2></div>
+        <button className='other-top-div' onClick={() => setz(false)}><div className='inside-top-div'><b>Ler QR Code</b></div></button>
+        <div className='bigger-div'><strong>Clique no botão abaixo para ativar a câmera e escanear um QR Code</strong>
+        <div className='inside-bigger-div'><strong>Ativar câmera</strong></div></div>
+    </>
+  )
+  if (!isok && !other && !side)
+  return(
+    <>
+        <div className='top-top-div'><h2>&nbsp;&nbsp;&nbsp;&nbsp;QR Code</h2></div>
+        <button className='other-top-div' onClick={() => setz(true)}><div className='inside-other-div'><b>Gerar QR Code</b></div></button>
+        <div className='bigger-div'><strong>Digite o link para gerar um QR Code</strong></div>
+        <div className='build-qr'><b>Ex.: https://exemplo.com</b></div>
+    </>
+  )
+}
 export default App
 
 
