@@ -2,11 +2,13 @@ import { useState } from 'react';
 import './App.css'
 import './Other.css'
 import './qrcode.css'
+import './local.css'
 import logo from './logo.png';
 function App() {
   const [isok, setx] = useState(true)
   const [other, sety] = useState(true)
   const [side, setz] = useState(true)
+  const [map, seth] = useState(true)
   if (isok)
   return (
     <>
@@ -51,16 +53,35 @@ function App() {
         <div className='top-top-div'><h2>&nbsp;&nbsp;&nbsp;&nbsp;QR Code</h2></div>
         <button className='other-top-div' onClick={() => setz(false)}><div className='inside-top-div'><b>Ler QR Code</b></div></button>
         <div className='bigger-div'><strong>Clique no botão abaixo para ativar a câmera e escanear um QR Code</strong>
-        <div className='inside-bigger-div'><strong>Ativar câmera</strong></div></div>
+        <button className='inside-bigger-div' onClick={() => seth(false) & setz(false)}><strong>Ativar câmera</strong></button></div>
     </>
   )
-  if (!isok && !other && !side)
+  if (!isok && !other && !side && map)
   return(
     <>
         <div className='top-top-div'><h2>&nbsp;&nbsp;&nbsp;&nbsp;QR Code</h2></div>
         <button className='other-top-div' onClick={() => setz(true)}><div className='inside-other-div'><b>Gerar QR Code</b></div></button>
         <div className='bigger-div'><strong>Digite o link para gerar um QR Code</strong></div>
         <div className='build-qr'><b>Ex.: https://exemplo.com</b></div>
+    </>
+  )
+  if (!isok && !other && !side && !map)
+  return(
+    <>
+        <div className='local-back'><img src='https://cdn-icons-png.flaticon.com/512/5192/5192571.png' width='100' height='100'>
+        </img><h2><strong>Mapa de locais de vacinação</strong></h2><h3>Encontre postos de vacinação perto de você</h3>
+        </div><div className='bottom-div'><h2>&nbsp;&nbsp;&nbsp;&nbsp;Campanhas ativas</h2>
+        <div className='inside-bottom-div'><p><img src='https://cdn-icons-png.flaticon.com/512/6093/6093180.png' width='30' height='30'></img>
+        <b>Campanha da Gripe<br></br></b>
+        Proteja-se contra a gripe</p></div>
+        <div className='inside-bottom-div'><p>
+          <img src='https://cdn-icons-png.flaticon.com/512/4468/4468768.png' width='30' height='30'>
+          </img><b>Campanha da Poliomielite<br></br></b>
+        Vacine as crianças menores de 5 anos de idade</p></div></div>
+        <img src='https://icons.veryicon.com/png/o/commerce-shopping/poly-budget-icon-library/home-202.png' width='50' height='50'>
+        </img><p><b>Início</b></p>
+        <img src='https://cdn-icons-png.flaticon.com/512/808/808999.png' width='50' height='50'></img><p><b>Vacinas</b></p>
+        <img src='https://cdn-icons-png.flaticon.com/512/263/263056.png' width='50' height='50'></img><p><b>Ranking</b></p>
     </>
   )
 }
