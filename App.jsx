@@ -78,10 +78,13 @@ function App() {
           <img src='https://cdn-icons-png.flaticon.com/512/4468/4468768.png' width='30' height='30'>
           </img><b>Campanha da Poliomielite<br></br></b>
         Vacine as crianças menores de 5 anos de idade</p></div></div>
+        <div className='vacinas-div'><p>
+        <img src='https://cdn-icons-png.flaticon.com/512/808/808999.png' width='50' height='50'></img><b>Vacinas</b></p></div>
+        <div className='ranking-div'><p>
+        <img src='https://cdn-icons-png.flaticon.com/512/263/263056.png' width='50' height='50'></img><b>Ranking</b></p></div>
+        <div className='inicio-div'><p>
         <img src='https://icons.veryicon.com/png/o/commerce-shopping/poly-budget-icon-library/home-202.png' width='50' height='50'>
-        </img><p><b>Início</b></p>
-        <img src='https://cdn-icons-png.flaticon.com/512/808/808999.png' width='50' height='50'></img><p><b>Vacinas</b></p>
-        <img src='https://cdn-icons-png.flaticon.com/512/263/263056.png' width='50' height='50'></img><p><b>Ranking</b></p>
+        </img><br></br><b>Início</b></p></div>
     </>
   )
 }

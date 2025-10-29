@@ -33,3 +33,26 @@
     margin-bottom: 30px;
     padding-left: 10px;
 }
+
+.inicio-div {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    left: 30px;
+    bottom: 10px;
+}
+
+.vacinas-div {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 10px;
+}
+
+.ranking-div {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 10px;
+    right: 30px;
+}
