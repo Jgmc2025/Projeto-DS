@@ -11,6 +11,7 @@ function App() {
   const [side, setz] = useState(true)
   const [map1, seth] = useState(true)
   const [vacs, setv] = useState(true)
+  const [cap, setc] = useState(true)
   if (isok)
   return (
     <>
@@ -94,7 +95,7 @@ function App() {
         </img><br></br><b>Início</b></p></div>
     </>
   )
-  if (!isok && !other && !side && !map1 && !vacs)
+  if (!isok && !other && !side && !map1 && !vacs && cap)
   return(
     <>
       {/*Tela de vacinas*/}
@@ -107,10 +108,16 @@ function App() {
         <div className='campanhas-div'>BCG<div className='campanhascolor-div'><strong>Proteção contra tuberculose</strong></div></div>
         <div className='campanhas-div'>Penta (DTP/Hib/Hepatite B)<div className='campanhascolor-div'><strong>Proteção combinada contra 5 doenças</strong></div></div>
         <div className='campanhas-div'>Poliomielite (VIP e VOP)<div className='campanhascolor-div'><strong>Prevenção da paralisia infantil</strong></div></div>
-
+        <button className='vacinas-div' onClick={() => setc(false)}><p>
+        <img src='https://cdn-icons-png.flaticon.com/512/808/808999.png' width='50' height='50'></img><b>Vacinas</b></p></button>
         </h2></div>
         
         
+    </>
+  )
+  if (!isok && !other && !side && !map1 && !vacs && !cap)
+  return(
+    <>
     </>
   )
 }
