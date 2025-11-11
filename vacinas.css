@@ -1,0 +1,70 @@
+.msg_telavacina{
+    position: fixed;
+    top: 90px;
+    left: 25px;
+    text-align:left;
+}
+
+
+.campanhas-div {
+    position: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    left: 20px;
+    height: 80px;
+    width: 90vw;
+    background-color: white;
+    border-radius: 15px;
+    border: 2px solid silver;
+    font-size: 20px;
+    color: black;
+    padding-top: 40px;
+    padding-left: 30px;
+}
+
+.campanhascolor-div {
+    color: gray;
+}
+
+.ativa-div{      
+    position:fixed; 
+    right: 160px;
+    top: 225px;
+    height:30px;
+    width: 80px;
+    color: black;
+    padding-left: 30px ;
+    border: 2px solid #7EC8E3;
+    border-radius: 15px;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: #7EC8E3;
+}
+
+.programadas-div{      
+    position:fixed; 
+    right: 160px;
+    top: 375px;
+    height:30px;
+    width: 140px;
+    color:black;
+    padding-left: 20px;
+    border: 2px solid  #A4D7A7;
+    border-radius: 15px;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color:  #A4D7A7;
+}
+
+.botao-capibas-div {
+    width: 200px;
+    height: 50px;
+    position: fixed;
+    top: 20px;
+    right: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
