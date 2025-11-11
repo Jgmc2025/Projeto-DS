@@ -1,0 +1,58 @@
+.local-back {
+    position: fixed;
+    width: 100vw;
+    height: 600px;
+    background-image: linear-gradient(to right, #A4D7A7, white);
+    align-content: center;
+    left: 0;
+    top: 0;
+}
+
+.bottom-div {
+    position: fixed;
+    width: 100vw;
+    height: 250px;
+    background-color: white;
+    border-top: 2px solid silver;
+    border-bottom: 2px solid silver;
+    font-size: 20px;
+    top: 600px;
+    left: 0;
+    text-align: left;
+}
+
+.inside-bottom-div {
+    width: 300px;
+    height: 125px;
+    background-color: white;
+    border: 2px solid lightgray;
+    border-radius: 15px;
+    position: flex;
+    float: left;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    padding-left: 10px;
+}
+
+.inicio-div {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    left: 30px;
+    bottom: 10px;
+}
+
+.vacinas-div {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 5px;
+}
+
+.ranking-div {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 10px;
+    right: 30px;
+}
