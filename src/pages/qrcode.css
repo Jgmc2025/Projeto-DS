@@ -60,7 +60,7 @@
 .inside-bigger-div {
     position: fixed;
     top: 330px;
-    right: 735px;
+    right: 500px;
     height: 50px;
     width: 400px;
     background-image: linear-gradient(to right, #7EC8E3, #A4D7A7);
@@ -74,7 +74,7 @@
 .build-qr {
     position: fixed;
     top: 330px;
-    right: 635px;
+    right: 400px;
     height: 50px;
     width: 600px;
     border-radius: 15px;

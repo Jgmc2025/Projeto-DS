@@ -43,9 +43,7 @@
 }
 
 .buttom-div {
-    margin-left: 250px;
-    float: left;
-    display: flex; /* Enables Flexbox layout */
+    display: flex; 
     height: 50px;
     width: 250px;
     color: black;

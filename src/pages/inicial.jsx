@@ -15,8 +15,7 @@ function Inicial() {
         <p className="read-the-docs">
           <strong>Sistema de gerenciamento de vacinação do Recife
           <br></br>Simples, rápido e seguro</strong></p>
-        <center><button class='buttom-div' onClick={Acessar}><b>Acessar Plataforma</b></button>
-        <div class='about'><b>Saiba mais</b></div></center>
+        <center><button class='buttom-div' onClick={Acessar}><b>Acessar Plataforma</b></button></center>
         <div class="position-">
         <p className='text-test'><img src="https://cdn-icons-png.flaticon.com/512/102/102649.png" width="30" height="30">
         </img><b>&nbsp;Seguro</b><br></br>Seus dados protegidos com as melhores práticas de segurança</p>
