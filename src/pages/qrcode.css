@@ -10,21 +10,25 @@
 }
 
 .other-top-div {
-    position: fixed;
+    display: flex;
+    margin-bottom: 30px;
+    margin-top: 30px;
     top: 120px;
     left: 85px;
     height: 50px;
-    width: 90vw;
+    width: 1000px;
     background-color: lightgray;
     border-radius: 15px;
 }
 
+h2 {
+    padding-left: 30px;
+}
+
 .inside-top-div {
-    position: fixed;
-    top: 125px;
-    left: 90px;
+    display: flex;
     height: 40px;
-    width: 45vw;
+    width: 200px;
     background-color: white;
     border-radius: 15px;
     font-size: 20px;
@@ -32,7 +36,7 @@
 }
 
 .inside-other-div {
-    position: fixed;
+    position: flex;
     top: 125px;
     right: 105px;
     height: 40px;
@@ -44,21 +48,21 @@
 }
 
 .bigger-div {
-    position: fixed;
-    top: 200px;
-    right: 100px;
-    height: 220px;
-    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 1000px;
     background-color: white;
     border-radius: 15px;
     border: 2px solid silver;
     font-size: 20px;
     color: #888;
     padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .inside-bigger-div {
-    position: fixed;
+    position: flex;
     top: 330px;
     right: 500px;
     height: 50px;
@@ -72,7 +76,7 @@
 }
 
 .build-qr {
-    position: fixed;
+    position: flex;
     top: 330px;
     right: 400px;
     height: 50px;

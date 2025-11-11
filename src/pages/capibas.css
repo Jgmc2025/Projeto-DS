@@ -1,4 +1,3 @@
-/* Div do cabeçalho */
 .top-top-top-div {
     position: fixed;
     top: 0;
@@ -12,8 +11,6 @@
     padding: 0 50px;
     box-sizing: border-box;
 }
-
-/* Div de funcionamento */
 .funcionamento-div {
     margin-top: 100px; 
     height:85px;
@@ -27,19 +24,13 @@
     padding: 10px 50px;
     box-sizing: border-box;
 }
-
 .funcionamento-color-div {
     color: gray;
 }
-
-/* Mensagem de troca */
 .msg-trocas-div {
     margin-top: 20px;
     text-align: left;
 }
-
-/* Área de trocas */
-/* Div das trocas */
 .trocas-div {
     margin-top: 30px;
     height: 210px;
@@ -54,30 +45,22 @@
     text-align: left;
     padding-left: 10px;
 }
-
-/* Ajusta a parte "strong" do div de trocas */
 .trocas-div strong {
   margin-bottom: 2px; 
   display: block;
 }
-
-/* Ajusta a parte "p" do div de trocas */
 .trocas-div p {
   margin-top: 2px;
   margin-bottom: 0;
   font-size: 15px;
   padding-left: 10px;
 }
-
-/* Ajusta a parte "h4" do div de trocas */
 .trocas-div h4 {
   margin-top: 20px;
   margin-bottom: 0;
   font-size: 20px;
   padding-left: 10px;
 }
-
-/* Nome das vacinas do pacote */
 .nome-vacina-div {
     display: inline-block;
     background-color: lightgrey;
@@ -87,28 +70,21 @@
     padding-right: 5px;
     margin-left: 15px;
 }
-
-/* Botão de trocar */
 .botao-troca-div {
     background-color: lightblue;
     border-radius: 10px;
     font-size: 15px;
     text-align: center;
     width: 96vw;
-    padding-right: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 15px;
 }
-
-/* Alinhar o Nome do Pacote à esquerda com o Preço à direita  */
 .titulo-preco-div {
   display: flex;
   justify-content: space-between; 
   margin-bottom: 5px;       
 }
-
-/* Parte à direita que informa o preço do pacote */
 .preco-troca-div {
   background-color: lightgreen;
   border-radius: 10px;

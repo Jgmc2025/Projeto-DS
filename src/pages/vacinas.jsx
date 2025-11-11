@@ -18,8 +18,7 @@ function Vacinas() {
         <div className='campanhas-div'>BCG<div className='campanhascolor-div'><strong>Proteção contra tuberculose</strong></div></div>
         <div className='campanhas-div'>Penta (DTP/Hib/Hepatite B)<div className='campanhascolor-div'><strong>Proteção combinada contra 5 doenças</strong></div></div>
         <div className='campanhas-div'>Poliomielite (VIP e VOP)<div className='campanhascolor-div'><strong>Prevenção da paralisia infantil</strong></div></div>
-        <button className='vacinas-div' onClick={Acessar}><p>
-        <img src='https://cdn-icons-png.flaticon.com/512/808/808999.png' width='50' height='50'></img><b>Vacinas</b></p></button>
+        <button className='vacinas-div' onClick={Acessar}><p><b>Capibas</b></p></button>
         </h2></div>
     </>
   )

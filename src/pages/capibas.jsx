@@ -4,7 +4,7 @@ function Capibas() {
   return(
     <>
     {/*Tela de capibas*/}
-    <div className='top-top-top-div'><h2>&nbsp;&nbsp;&nbsp;&nbsp;<img src='https://cdn-icons-png.flaticon.com/512/1373/1373452.png' width='25' height='25'></img>&nbsp;&nbsp;&nbsp;Câmbio de Capibas</h2></div>
+    <div className='top-top-top-div'><h2><img src='https://cdn-icons-png.flaticon.com/512/1373/1373452.png' width='25' height='25'></img>&nbsp;&nbsp;&nbsp;Câmbio de Capibas</h2></div>
     <div className='funcionamento-div'><strong>Como funciona?</strong><div className='funcionamento-color-div'>
       <strong>Troque suas vacinas tomadas por moedas Capibas e resgate prêmios!</strong></div></div>
     <div className='msg-trocas-div'><h2>Opções de Troca Disponíveis</h2></div>
