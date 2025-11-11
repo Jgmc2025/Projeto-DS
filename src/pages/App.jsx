@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
-import Inicial from './pages/inicial';
-import Login from './pages/login';
-import Ler from './pages/lerqr';
-import Gerar from './pages/gerarqr';
-import Local from './pages/local';
-import Vacinas from './pages/vacinas';
-import Capibas from './pages/capibas';
+import Inicial from './inicial';
+import Login from './login';
+import Ler from './lerqr';
+import Gerar from './gerarqr';
+import Local from './local';
+import Vacinas from './vacinas';
+import Capibas from './capibas';
 import './App.css';
 import './index.css';
 import './other.css';
