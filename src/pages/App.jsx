@@ -4,8 +4,6 @@ import Login from './login';
 import Ler from './lerqr';
 import Gerar from './gerarqr';
 import Local from './local';
-import Vacinas from './vacinas';
-import Capibas from './capibas';
 import './App.css';
 import './index.css';
 import './other.css';
@@ -18,8 +16,6 @@ function App() {
       <Route path="/qrcode-scan" element={<Ler />} />
       <Route path="/qrcode-gen" element={<Gerar />} />
       <Route path="/mapa" element={<Local />} />
-      <Route path="/vacinas" element={<Vacinas />} />
-      <Route path="/capibas" element={<Capibas />} />
       <Route path="*" element={<div>Página não encontrada</div>} />
     </Routes>
   );

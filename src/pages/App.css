@@ -57,7 +57,7 @@
 
 .about {
     margin-right: 250px;
-    display: flex; /* Enables Flexbox layout */
+    display: flex; 
     height: 50px;
     width: 175px;
     color: black;
@@ -71,4 +71,8 @@
 .one-image {
     display: block;
     margin: 0 auto;
+}
+
+.home {
+    right: 20px;
 }

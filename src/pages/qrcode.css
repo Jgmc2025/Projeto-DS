@@ -13,38 +13,17 @@
     display: flex;
     margin-bottom: 30px;
     margin-top: 30px;
-    top: 120px;
-    left: 85px;
     height: 50px;
-    width: 1000px;
+    width: 185px;
     background-color: lightgray;
     border-radius: 15px;
+    align-content: center;
+    text-align: center;
+    align-items: center;
 }
 
 h2 {
     padding-left: 30px;
-}
-
-.inside-top-div {
-    display: flex;
-    height: 40px;
-    width: 200px;
-    background-color: white;
-    border-radius: 15px;
-    font-size: 20px;
-    align-content: center;
-}
-
-.inside-other-div {
-    position: flex;
-    top: 125px;
-    right: 105px;
-    height: 40px;
-    width: 45vw;
-    background-color: white;
-    border-radius: 15px;
-    font-size: 20px;
-    align-content: center;
 }
 
 .bigger-div {
@@ -64,7 +43,6 @@ h2 {
 .inside-bigger-div {
     position: flex;
     top: 330px;
-    right: 500px;
     height: 50px;
     width: 400px;
     background-image: linear-gradient(to right, #7EC8E3, #A4D7A7);
@@ -77,8 +55,6 @@ h2 {
 
 .build-qr {
     position: flex;
-    top: 330px;
-    right: 400px;
     height: 50px;
     width: 600px;
     border-radius: 15px;
