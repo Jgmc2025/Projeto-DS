@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import logo from './logo.png';
 
-function Inicial() {
+function Prelogin() {
     const navigate = useNavigate();
     function Acessar() {
     navigate('/login'); 
@@ -9,7 +9,6 @@ function Inicial() {
   return (
     <>
       {/*Tela inicial*/}
-      <img src='https://cdn-icons-png.flaticon.com/512/25/25694.png' height='50' width='50'></img>
         <div className='fade-test'>
         <h1><img src={logo} width='125' height='125' className='one-image'>
         </img>Capivac</h1></div>
@@ -29,6 +28,6 @@ function Inicial() {
     </>
   )
 }
-export default Inicial
+export default Prelogin
 
 
