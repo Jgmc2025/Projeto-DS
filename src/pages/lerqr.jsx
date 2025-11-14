@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import './qrcode.css'
+import '../css/qrcode.css'
 
 function Ler() {
   const navigate = useNavigate();

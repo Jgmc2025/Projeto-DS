@@ -5,9 +5,9 @@ import Ler from './lerqr';
 import Gerar from './gerarqr';
 import Local from './local';
 import Menu from './menu';
-import './App.css';
-import './index.css';
-import './other.css';
+import '../css/App.css';
+import '../css/index.css';
+import '../css/other.css';
 
 function App() {
   return (
