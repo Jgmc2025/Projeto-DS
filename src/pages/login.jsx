@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import "../css/login.css"
 
 function Login() {
     const navigate = useNavigate();
@@ -9,20 +10,56 @@ function Login() {
   return (
     <>
       {/*Tela de login*/}
-        <div className='other-fade'>
-        <h1><img src={logo} width='125' height='125' className='other-image'>
-        </img>Capivac</h1></div><p className='text-top'>
-        <strong>Acesse sua conta</strong></p>
-        <div className='other-div'><p>
-        <img src='https://www.svgrepo.com/show/24584/info-icon.svg' width="20" height="20">
-        </img>&nbsp;&nbsp;&nbsp;Use seu CPF e senha do Conecta Recife para acessar o sistema</p></div>
-        <div className='another-div'><h2 className='login'>Login</h2><h3>CPF</h3>
-        <div className='password'>000.000.000-00</div><h3>Senha</h3>
-        <div className='password'>Digite sua senha</div>
-        <button class='join' onClick={Acessar}>Entrar</button></div>
-        <h3>Não possui cadastro? <a target='_blank' href='https://login.recife.pe.gov.br/auth/realms/recife/login-actions/registration?client_id=psp&tab_id=aptEbOaFXRs'> clique aqui </a></h3>
+      <div className="area-logo">
+        <img
+            src={logo}
+            width="125"
+            height="125"
+          />
+        <h1>
+          Capivac
+        </h1>
+      </div>
+
+      <p className="texto-topo">Acesse sua conta</p>
+
+      <div className="info">
+        <img
+            src="https://www.svgrepo.com/show/24584/info-icon.svg"
+            width="20"
+            height="20"
+           />
+        <p>
+          Use seu CPF e senha do Conecta Recife para acessar o
+          sistema
+        </p>
+      </div>
+
+
+      <form className="form-div">
+        <h2 className="login">Login</h2>
+        <h3>CPF</h3>
+        <input className="cpf" placeholder='000.000.000-00' />
+        <h3>Senha</h3>
+
+        <input className="senha" placeholder='Digite sua senha' />
+
+        <button type="submit" class="join" onClick={Acessar}>
+          Entrar
+        </button>
+      </form>
+      <h3>
+        Não possui cadastro?{" "}
+        <a
+          target="_blank"
+          href="https://login.recife.pe.gov.br/auth/realms/recife/login-actions/registration?client_id=psp&tab_id=aptEbOaFXRs"
+        >
+          {" "}
+          clique aqui{" "}
+        </a>
+      </h3>
     </>
-  )
+  );
 }
 export default Login
 
