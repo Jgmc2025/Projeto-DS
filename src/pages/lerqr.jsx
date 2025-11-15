@@ -7,7 +7,7 @@ function Ler() {
     navigate('/qrcode-gen'); 
   }
   function Acessar2() {
-    navigate('/mapa'); 
+    navigate('/mapa');
   }
   return(
     <>

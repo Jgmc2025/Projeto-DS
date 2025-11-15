@@ -53,12 +53,13 @@
     height: 50px;
     padding-left: 20px;
     width: 500px;
-    color: #888;
+    color: black;
     border: 1px solid gray;
     border-radius: 15px;
     justify-content: left;
     text-align: left;
     font-size: 18px;
+    background-color:white;
 }
 
 .cpf {
@@ -66,24 +67,22 @@
     height: 50px;
     padding-left: 20px;
     width: 500px;
-    color: #888;
+    color: black;
     border: 1px solid gray;
     border-radius: 15px;
     justify-content: left;
     text-align: left;
     font-size: 18px;
+    background-color:white;
 }
 
-.join {
-    display: flex; /* Enables Flexbox layout */
+.entrar-btn {
     height: 50px;
     width: 520px;
     color: black;
     border: 2px solid #7EC8E3;
     border-radius: 15px;
     font-size: 20px;
-    align-items: center;
-    justify-content: center;
     background-image: linear-gradient(to right, #7EC8E3, #A4D7A7);
     margin-top: 30px;
 }

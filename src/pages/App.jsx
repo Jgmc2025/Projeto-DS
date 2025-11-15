@@ -5,7 +5,6 @@ import Ler from './lerqr';
 import Gerar from './gerarqr';
 import Local from './local';
 import Menu from './menu';
-import '../css/App.css';
 import '../css/index.css';
 import '../css/other.css';
 

@@ -15,7 +15,7 @@
     border: 2px solid lightgray;
     border-radius: 15px;
     color: black;
-    border-style: solid; /* A border-style must be set for the border to be visible */
+    border-style: solid;
     border-color: #A4D7A7;
     font-size: 20px;
 }
