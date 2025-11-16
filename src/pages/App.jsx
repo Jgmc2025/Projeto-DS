@@ -6,7 +6,6 @@ import Gerar from './gerarqr';
 import Local from './local';
 import Menu from './menu';
 import '../css/index.css';
-import '../css/other.css';
 
 function App() {
   return (

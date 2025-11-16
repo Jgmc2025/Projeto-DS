@@ -1,24 +1,100 @@
-import { useNavigate } from 'react-router-dom';
-import '../css/qrcode.css'
+import { useState, useEffect, useRef } from 'react';
 
-function Ler() {
-  const navigate = useNavigate();
-  function Acessar1() {
-    navigate('/qrcode-gen'); 
-  }
-  function Acessar2() {
-    navigate('/mapa');
-  }
-  return(
-    <>
-      {/*Tela de ler QR Code*/}
-        <div className='top-top-div'><h2>QR Code</h2></div>
-        <div className='bigger-div'><strong>Clique no botão abaixo para ativar a câmera e escanear um QR Code</strong>
-        <button className='inside-bigger-div' onClick={Acessar2}><strong>Ativar câmera</strong></button></div>
-        <center><button className='other-top-div' onClick={Acessar1}>
-          <b>Ler QR Code &nbsp;<img width='20' height='20' src='https://cdn-icons-png.freepik.com/512/20/20592.png'>
-        </img></b></button></center>
-    </>
-  )
+function Ler({ onSucesso }) {
+  const [data, setData] = useState('Aponte a câmera para um QR Code');
+  const videoRef = useRef(null);
+  const streamRef = useRef(null);
+  const requestRef = useRef(null);
+
+  const stopCamera = () => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach(track => track.stop());
+      streamRef.current = null;
+      setData('Câmera parada.');
+    }
+    if (requestRef.current) {
+      cancelAnimationFrame(requestRef.current);
+      requestRef.current = null;
+    }
+  };
+
+  const startScan = async () => {
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: 'environment' }
+      });
+      streamRef.current = stream; 
+
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        videoRef.current.play().catch(e => console.error("Erro ao iniciar play", e));
+      }
+      const detect = async () => {
+        if (!videoRef.current || videoRef.current.readyState < 2) {
+          requestRef.current = requestAnimationFrame(detect);
+          return;
+        }
+
+        try {
+          const barcodes = await barcodeDetector.detect(videoRef.current);
+          
+          if (barcodes.length > 0) {
+            const decodedText = barcodes[0].rawValue;
+            setData(`Lido: ${decodedText}`);
+
+            if (decodedText === 'Validado com sucesso! \nVocê ganhou 250 Capibas.') {
+              setData(`Sucesso! ${decodedText}`);
+            
+              stopCamera();
+
+              if (onSucesso) {
+                onSucesso(decodedText);
+              }
+            } else {
+              setData('QR Code inválido. Tente novamente.');
+              requestRef.current = requestAnimationFrame(detect);
+            }
+          } else {
+            requestRef.current = requestAnimationFrame(detect);
+          }
+        }catch (e) {
+          console.error('Erro na detecção:', e);
+        }
+      };
+      requestRef.current = requestAnimationFrame(detect);
+
+    } catch (err) {
+      console.error('Erro ao acessar a câmera:', err);
+      if (err.name === 'NotAllowedError') {
+        setData('Você precisa dar permissão para usar a câmera.');
+      } else {
+        setData('Erro ao iniciar a câmera.');
+      }
+    }
+  };
+
+  useEffect(() => {
+    startScan();
+
+    return () => {
+      stopCamera();
+    };
+  }, [onSucesso]); 
+
+  return (
+    <div className="p-4 w-full max-w-md mx-auto">
+      <video 
+        ref={videoRef} 
+        playsInline 
+        autoPlay
+        muted
+        className="w-full h-auto rounded-lg border"
+        style={{ transform: 'scaleX(-1)' }}
+      ></video>
+      <p className="mt-4 text-center font-medium">{data}</p>
+    </div>
+  );
 }
-export default Ler
+
+export default Ler;

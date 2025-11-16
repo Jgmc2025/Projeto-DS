@@ -1,21 +1,16 @@
-import { useNavigate } from 'react-router-dom';
-import '../css/qrcode.css'
+import QRCode from "react-qr-code";
 
-function Gerar() {
-    const navigate = useNavigate();
-    function Acessar() {
-    navigate('/qrcode-scan'); 
-  }
-  return(
+function Gerar({ valor }) {
+  const valorParaQR = valor || 'Validado com sucesso! \nVocê ganhou 250 Capibas.'; 
+
+  return (
     <>
-      {/*Tela que gera QR Code*/}
-        <div className='top-top-div'><h2>QR Code</h2></div>
-        <div className='bigger-div'><strong>Digite o link para gerar um QR Code</strong>
-        <center><div className='build-qr'><b>Ex.: https://exemplo.com</b></div></center></div>
-        <center><button className='other-top-div' onClick={Acessar}>
-          <b>Gerar QR Code &nbsp;<img width='20' height='20' src='https://cdn-icons-png.freepik.com/512/20/20592.png'>
-        </img></b></button></center>
+      <QRCode
+        value={valorParaQR} 
+        size={256}
+        style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+      />
     </>
   )
 }
-export default Gerar
+export default Gerar;
