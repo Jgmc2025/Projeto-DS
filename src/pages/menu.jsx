@@ -12,6 +12,9 @@ function Menu() {
     function Ranking() {
     navigate('/login'); 
   }
+  function Vacinas() {
+    navigate('/vacinas-disponiveis'); 
+  }
   function Qrcode() {
     if (tipoUsuario === "comum") {
       navigate('/qrcode-scan'); 
@@ -38,11 +41,15 @@ function Menu() {
         </button>
         <button class="card" onClick={Qrcode}>
           <p class="card-subtitle">QR-Code</p>
-          <p className="card-text">Valide sua vacinação e ganhe capibas</p>
+          <p className="card-text">Valide sua vacinação e ganhe Capibas</p>
         </button>
         <button class="card" onClick={Ranking}>
           <p class="card-subtitle">Ranking</p>
           <p className="card-text">Ranking dos bairros mais vacinados</p>
+        </button>
+        <button class="card" onClick={Vacinas}>
+          <p class="card-subtitle">Vacinas</p>
+          <p className="card-text">Veja as vacinas disponíveis nos postos de saúde</p>
         </button>
       </div>
     </>

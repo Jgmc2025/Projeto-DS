@@ -1,0 +1,7 @@
+.tela-vacinas {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
