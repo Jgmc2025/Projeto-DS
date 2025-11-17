@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "../css/prelogin.css";
+import NavBar from "../components/navbar";
 
 function Prelogin() {
   const navigate = useNavigate();

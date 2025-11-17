@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import NavBar from '../components/navbar';
 
 function Ler({ onSucesso }) {
   const [data, setData] = useState('Aponte a câmera para um QR Code');
@@ -83,17 +84,20 @@ function Ler({ onSucesso }) {
   }, [onSucesso]); 
 
   return (
-    <div className="p-4 w-full max-w-md mx-auto">
-      <video 
-        ref={videoRef} 
-        playsInline 
-        autoPlay
-        muted
-        className="w-full h-auto rounded-lg border"
-        style={{ transform: 'scaleX(-1)' }}
-      ></video>
-      <p className="mt-4 text-center font-medium">{data}</p>
-    </div>
+    <>
+      <NavBar />
+      <div className="p-4 w-full max-w-md mx-auto">
+        <video 
+          ref={videoRef} 
+          playsInline 
+          autoPlay
+          muted
+          className="w-full h-auto rounded-lg border"
+          style={{ transform: 'scaleX(-1)' }}
+        ></video>
+        <p className="mt-4 text-center font-medium">{data}</p>
+      </div>
+      </>
   );
 }
 

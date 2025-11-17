@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import NavBar from '../components/navbar';
 
 const locations = [
   { coords: [-8.058467379904435, -34.90690108834618], name: "Policlínica Lessa de Andrade" },
@@ -42,10 +43,13 @@ function MeuMapa() {
     }
   }, []);
   return (
-    <div
-      id="map"
-      style={{ height: "40vw", width: "100vw" }}
-    />
+    <div>
+      <NavBar />
+      <div
+        id="map"
+        style={{ height: "40vw", width: "100vw" }}
+      />
+    </div>
   );
 }
 export default MeuMapa;
