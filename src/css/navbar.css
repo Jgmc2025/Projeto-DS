@@ -1,20 +1,17 @@
-.navbar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    background-image: linear-gradient(to right, #7EC8E3, #A4D7A7);
-    height: 100px;
-    margin-top: 0;
-    width: 100vw;
+.botao-voltar {
+  text-decoration: none;
+  color: #555;
+  font-size: 1.5rem;
 }
-.home-img{
-    width: 50px;
-    height: 50px;
-    margin-right: 50px;
-    margin-top: 20px;
+.headernav {
+  position: fixed;
+  font-size: 1.5rem;
+  top: 0;
+  left: 0;
 }
-.navbar-link{
-    display: flex;
-    justify-content: flex-end;
+.voltar {
+  position: fixed;
+  font-size: 1.5rem;
+  top: 0;
+  left: 0;
 }
