@@ -1,0 +1,90 @@
+/* Fundo geral da página */
+.ranking-pag {
+  background-color: #f7f9fa;
+  min-height: 100vh;
+
+  width: 100vw; /* Força pegar a largura total da janela */
+  max-width: 100%; /* Previne rolagem horizontal indesejada */
+  margin: 0; /* Remove margens externas */
+  padding: 0; /* Remove preenchimento interno do container principal */
+
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* O Cabeçalho Branco do Topo */
+.header-topo {
+  background-color: #ffffff;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky; /* Deixa o topo fixo ao rolar */
+  top: 0;
+}
+
+.header-topo h1 {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0;
+  font-weight: 700;
+}
+
+.botao-voltar {
+  text-decoration: none;
+  color: #555;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Área principal de conteúdo */
+.conteudo-ranking {
+  padding: 20px;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* O Card Azulado Bairros de Recife */
+.card-titulo-lista {
+  background-color: #f0f7ff;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.icone-grafico {
+  font-size: 2rem;
+  background: white;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.card-titulo-lista h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: #1e3a8a;
+}
+
+.card-titulo-lista p {
+  margin: 5px 0 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.lista-bairros {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espaço entre cada item do ranking */
+}

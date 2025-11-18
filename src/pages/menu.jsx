@@ -1,25 +1,25 @@
-import { useNavigate, useLocation } from 'react-router-dom';
-import logo from '../assets/logo.png';
-import "../css/menu.css"
+import { useNavigate, useLocation } from "react-router-dom";
+import logo from "../assets/logo.png";
+import "../css/menu.css";
 
 function Menu() {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const tipoUsuario = location.state?.tipoUsuario;
-    function Mapa() {
-    navigate('/mapa'); 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const tipoUsuario = location.state?.tipoUsuario;
+  function Mapa() {
+    navigate("/mapa");
   }
-    function Ranking() {
-    navigate('/login'); 
+  function Ranking() {
+    navigate("/ranking");
   }
   function Vacinas() {
-    navigate('/vacinas-disponiveis'); 
+    navigate("/vacinas-disponiveis");
   }
   function Qrcode() {
     if (tipoUsuario === "comum") {
-      navigate('/qrcode-scan'); 
+      navigate("/qrcode-scan");
     } else {
-      navigate('/qrcode-gen');
+      navigate("/qrcode-gen");
     }
   }
   return (
@@ -49,10 +49,12 @@ function Menu() {
         </button>
         <button class="card" onClick={Vacinas}>
           <p class="card-subtitle">Vacinas</p>
-          <p className="card-text">Veja as vacinas disponíveis nos postos de saúde</p>
+          <p className="card-text">
+            Veja as vacinas disponíveis nos postos de saúde
+          </p>
         </button>
       </div>
     </>
   );
 }
-export default Menu
+export default Menu;
