@@ -1,4 +1,3 @@
-import React from "react";
 import "../css/RankingItem.css";
 import { FaTrophy } from "react-icons/fa";
 
