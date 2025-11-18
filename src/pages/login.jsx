@@ -36,6 +36,17 @@ function Login() {
       <form className="form-div">
         <h2 className="login">Login</h2>
 
+        <select
+          className="selecionar"
+          id="opcoes"
+          value={valor}
+          onChange={(e) => setValor(e.target.value)}
+        >
+          <option value="">--Selecione--</option>
+          <option value="comum">Usuário comum</option>
+          <option value="funcionario">Funcionário</option>
+        </select>
+
         <h3>CPF</h3>
         <input className="cpf" placeholder="000.000.000-00" />
         <h3>Senha</h3>
