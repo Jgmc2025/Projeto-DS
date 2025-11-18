@@ -7,7 +7,7 @@ function NavBar() {
     return(
         <div className="headernav">
           <h1 className='voltar'>
-                <Link to="/menu" className="botao-voltar">
+                <Link to="/menu" className="botao-nav">
                     <FaArrowLeft />
                 </Link>
               Voltar</h1>
