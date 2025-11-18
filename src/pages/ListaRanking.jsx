@@ -1,4 +1,3 @@
-import React from "react";
 import RankingItem from "../components/RankingItem";
 import { Link } from "react-router-dom";
 import { bairrosData } from "../mockbairros";
@@ -17,7 +16,7 @@ function Ranking() {
         <Link to="/menu" className="botao-voltar">
           <FaArrowLeft />
         </Link>
-        <h1>Ranking de Vacinação</h1>
+        <h1>Voltar</h1>
       </header>
 
       {/* Conteúdo Principal */}

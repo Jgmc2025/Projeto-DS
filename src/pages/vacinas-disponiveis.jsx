@@ -7,8 +7,8 @@ function Cards() {
         <>
             <NavBar/>
             <div className='tela-vacinas'>
-                <Card className='tela-vacinas' nome='Dengue'
-                texto='Se vacine contra a dengue'>Cards Component</Card>
+                <Card className='tela-vacinas' nome='zica'
+                texto='Se vacine contra a zica'>Cards Component</Card>
             </div>
         </>
     )
