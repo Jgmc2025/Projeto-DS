@@ -4,7 +4,8 @@ import Login from "./login";
 import Ler from "./lerqr";
 import Gerar from "./gerarqr";
 import Local from "./local";
-import Menu from "./menu";
+import MenuFuncionario from "./menu-funcionario";
+import MenuComum from "./menu-comum";
 import Cards from "./vacinas-disponiveis";
 import Ranking from "./ListaRanking";
 
@@ -16,7 +17,8 @@ function App() {
       <Route path="/qrcode-scan" element={<Ler />} />
       <Route path="/qrcode-gen" element={<Gerar />} />
       <Route path="/mapa" element={<Local />} />
-      <Route path="/menu" element={<Menu />} />
+      <Route path="/menu-funcionario" element={<MenuFuncionario />} />
+      <Route path="/menu-comum" element={<MenuComum />} />
       <Route path="/vacinas-disponiveis" element={<Cards />} />
       <Route path="/ranking" element={<Ranking />} />
       <Route path="*" element={<div>Página não encontrada</div>} />

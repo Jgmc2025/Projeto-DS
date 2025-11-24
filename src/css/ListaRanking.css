@@ -1,11 +1,11 @@
 /* Fundo geral da página */
 .ranking-pag {
+  margin-top: 60px;
   background-color: #f7f9fa;
   min-height: 100vh;
 
   width: 100vw; /* Força pegar a largura total da janela */
   max-width: 100%; /* Previne rolagem horizontal indesejada */
-  margin: 0; /* Remove margens externas */
   padding: 0; /* Remove preenchimento interno do container principal */
 
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;

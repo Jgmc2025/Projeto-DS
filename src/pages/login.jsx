@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import logo from "../assets/logo.png";
 import "../css/login.css";
 
@@ -8,9 +8,11 @@ function Login() {
   const [valor, setValor] = useState("");
   function Acessar(event) {
     event.preventDefault();
-    if (valor !== "") {
-      navigate("/menu", { state: { tipoUsuario: valor } });
-    } else {
+    if (valor === "comum") {
+      navigate("/menu-comum");}
+    else if (valor === "funcionario") {
+      navigate("/menu-funcionario");}
+     else {
       alert("Por favor, selecione um tipo de usuário.");
     }
   }

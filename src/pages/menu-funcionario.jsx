@@ -1,11 +1,9 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "../css/menu.css";
 
 function Menu() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const tipoUsuario = location.state?.tipoUsuario;
   function Mapa() {
     navigate("/mapa");
   }
@@ -15,12 +13,11 @@ function Menu() {
   function Vacinas() {
     navigate("/vacinas-disponiveis");
   }
-  function Qrcode() {
-    if (tipoUsuario === "comum") {
-      navigate("/qrcode-scan");
-    } else {
-      navigate("/qrcode-gen");
-    }
+  function Gen() {
+    navigate("/qrcode-gen");
+  }
+  function Ler() {
+    navigate("/qrcode-scan");
   }
   return (
     <>
@@ -39,8 +36,8 @@ function Menu() {
           <p class="card-subtitle">Mapa</p>
           <p className="card-text">Mapa dos postos de vacinação</p>
         </button>
-        <button class="card" onClick={Qrcode}>
-          <p class="card-subtitle">QR-Code</p>
+        <button class="card" onClick={Gen}>
+          <p class="card-subtitle">Criar QR-Code</p>
           <p className="card-text">Valide sua vacinação e ganhe Capibas</p>
         </button>
         <button class="card" onClick={Ranking}>
@@ -52,6 +49,10 @@ function Menu() {
           <p className="card-text">
             Veja as vacinas disponíveis nos postos de saúde
           </p>
+        </button>
+        <button class="card" onClick={Ler}>
+          <p class="card-subtitle">Ler QR-Code</p>
+          <p className="card-text">Escaneie um QRCode e ganhe Capibas</p>
         </button>
       </div>
     </>

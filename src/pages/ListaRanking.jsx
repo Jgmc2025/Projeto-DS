@@ -1,8 +1,8 @@
 import RankingItem from "../components/RankingItem";
-import { Link } from "react-router-dom";
+import NavBar from "../components/navbar"
 import { bairrosData } from "../mockbairros";
 import "../css/ListaRanking.css";
-import { FaArrowLeft, FaChartLine } from "react-icons/fa";
+import { FaChartLine } from "react-icons/fa";
 
 function Ranking() {
   const listaOrdenada = [...bairrosData].sort((a, b) => {
@@ -12,13 +12,7 @@ function Ranking() {
   });
   return (
     <div className="ranking-pag">
-      <header className="header-topo">
-        <Link to="/menu" className="botao-voltar">
-          <FaArrowLeft />
-        </Link>
-        <h1>Voltar</h1>
-      </header>
-
+      <NavBar/>
       {/* Conteúdo Principal */}
       <main className="conteudo-ranking">
         {/* Card do Título da Lista */}
