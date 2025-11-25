@@ -1,12 +1,13 @@
 .botao-nav {
   text-decoration: none;
-  color: #555;
+  color: #333;
   font-size: 1.5rem;
   padding: 20px;
 }
 .headernav {
   font-size: 1.1rem;
   position: fixed;
+  z-index: 1000;
   top: 0;
   left: 0;
 }
