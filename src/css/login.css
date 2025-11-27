@@ -1,12 +1,16 @@
 .area-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 20px;
-    background-image: linear-gradient(to right, #7EC8E3, #A4D7A7); /* Define your gradient colors and direction */
-    -webkit-background-clip: text; /* Clip the background to the shape of the text */
-    background-clip: text;
-    color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+  background-image: linear-gradient(
+    to right,
+    #7ec8e3,
+    #a4d7a7
+  ); /* Define your gradient colors and direction */
+  -webkit-background-clip: text; /* Clip the background to the shape of the text */
+  background-clip: text;
+  color: transparent;
 }
 
 .texto-topo {
@@ -17,80 +21,89 @@
 }
 
 .selecionar {
-    border: 1px solid gray;
-    border-radius: 15px;
-    font-size: 15px;
-    padding-left: 5px;
-    padding-right: 5px;
+  border: 1px solid gray;
+  border-radius: 15px;
+  font-size: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .info {
-    display: flex;
-    gap: 10px;
-    height: 65px;
-    padding-right: 30px;
-    width: 550px;
-    color: black;
-    border: 1px solid #7EC8E3;
-    border-radius: 15px;
-    font-size: 18px;
-    align-items:center;
-    justify-content: right;
+  display: flex;
+  gap: 10px;
+  height: 65px;
+  padding-right: 30px;
+  width: 550px;
+  color: black;
+  border: 1px solid #7ec8e3;
+  border-radius: 15px;
+  font-size: 18px;
+  align-items: center;
+  justify-content: right;
 }
 
 .form-div {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    display: block;
-    height: 470px;
-    padding-left: 30px;
-    width: 550px;
-    color: black;
-    border: 2px solid silver;
-    border-radius: 15px;
-    justify-content: left;
-    text-align: left;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: block;
+  height: 470px;
+  padding-left: 30px;
+  width: 550px;
+  color: black;
+  border: 2px solid silver;
+  border-radius: 15px;
+  justify-content: left;
+  text-align: left;
 }
 
 .login {
-    font-size: 30px;
+  display: flex;
+  margin-left: -30px;
+  font-size: 30px;
+  justify-content: center;
 }
 
 .senha {
-    align-items: center;
-    height: 50px;
-    padding-left: 20px;
-    width: 500px;
-    color: black;
-    border: 1px solid gray;
-    border-radius: 15px;
-    justify-content: left;
-    text-align: left;
-    font-size: 18px;
-    background-color:white;
+  align-items: center;
+  height: 50px;
+  padding-left: 20px;
+  width: 500px;
+  color: black;
+  border: 1px solid gray;
+  border-radius: 15px;
+  justify-content: left;
+  text-align: left;
+  font-size: 18px;
+  background-color: white;
 }
 
 .cpf {
-    align-items: center;
-    height: 50px;
-    padding-left: 20px;
-    width: 500px;
-    color: black;
-    border: 1px solid gray;
-    border-radius: 15px;
-    justify-content: left;
-    text-align: left;
-    font-size: 18px;
-    background-color:white;
+  align-items: center;
+  height: 50px;
+  padding-left: 20px;
+  width: 500px;
+  color: black;
+  border: 1px solid gray;
+  border-radius: 15px;
+  justify-content: left;
+  text-align: left;
+  font-size: 18px;
+  background-color: white;
+}
+
+.entrar-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .entrar-btn {
-    height: 50px;
-    width: 520px;
-    color: black;
-    border: 2px solid #7EC8E3;
-    border-radius: 15px;
-    font-size: 20px;
-    background-image: linear-gradient(to right, #7EC8E3, #A4D7A7);
-    margin-top: 30px;
+  height: 50px;
+  width: 520px;
+  color: black;
+  border: 2px solid #7ec8e3;
+  border-radius: 15px;
+  font-size: 20px;
+  background-image: linear-gradient(to right, #7ec8e3, #a4d7a7);
+  margin-top: 30px;
 }

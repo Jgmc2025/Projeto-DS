@@ -1,18 +1,38 @@
 import { useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "../css/login.css";
 
 function Login() {
   const navigate = useNavigate();
   const [valor, setValor] = useState("");
+  const [cpf, setCpf] = useState("");
+  const handleCpf = (e) => {
+    let inputCpf = e.target.value;
+
+    // lógica de substituir qualquer não número por nada
+    inputCpf = inputCpf.replace(/\D/g, "");
+
+    // limitação de caracteres do cpf (11)
+    inputCpf = inputCpf.slice(0, 11);
+
+    // formatação
+    inputCpf = inputCpf
+      .replace(/(\d{3})(\d)/, "$1.$2") // coloca o 1 ponto
+      .replace(/(\d{3})(\d)/, "$1.$2") // coloca o 2 ponto
+      .replace(/(\d{3})(\d{1,2})$/, "$1-$2"); // coloca o traço
+
+    // atualiza o estado
+
+    setCpf(inputCpf);
+  };
   function Acessar(event) {
     event.preventDefault();
     if (valor === "comum") {
-      navigate("/menu-comum");}
-    else if (valor === "funcionario") {
-      navigate("/menu-funcionario");}
-     else {
+      navigate("/menu-comum");
+    } else if (valor === "funcionario") {
+      navigate("/menu-funcionario");
+    } else {
       alert("Por favor, selecione um tipo de usuário.");
     }
   }
@@ -50,12 +70,22 @@ function Login() {
         </select>
 
         <h3>CPF</h3>
-        <input className="cpf" placeholder="000.000.000-00" />
+        <input
+          className="cpf"
+          placeholder="000.000.000-00"
+          maxLength={14}
+          value={cpf}
+          onChange={handleCpf}
+        />
         <h3>Senha</h3>
-
         <input className="senha" placeholder="Digite sua senha" />
 
-        <button type="submit" class="entrar-btn" onClick={Acessar}>
+        <button
+          type="submit"
+          disabled={cpf.length < 14}
+          class="entrar-btn"
+          onClick={Acessar}
+        >
           Entrar
         </button>
       </form>
