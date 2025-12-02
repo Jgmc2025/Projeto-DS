@@ -52,7 +52,7 @@ function Menu() {
         </button>
         <button class="card" onClick={Ler}>
           <p class="card-subtitle">Ler QR-Code</p>
-          <p className="card-text">Escaneie um QRCode e ganhe Capibas</p>
+          <p className="card-text">Escaneie o QR-Code do paciente para validar a vacinação</p>
         </button>
       </div>
     </>
