@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import NavBar from '../components/navbar';
+import ModalConfirmacao from "../components/modalConfirmacao";
 
 function Ler({ onSucesso }) {
   const [data, setData] = useState('Aponte a câmera para um QR Code');
@@ -82,6 +83,9 @@ function Ler({ onSucesso }) {
       stopCamera();
     };
   }, [onSucesso]); 
+  const [isOpen, setIsOpen] = useState(false);
+  const nome = "Ítalo Oliveira Borges";
+  const cpf = "10294182479";
 
   return (
     <>
@@ -97,6 +101,45 @@ function Ler({ onSucesso }) {
         ></video>
         <p className="mt-4 text-center font-medium">{data}</p>
       </div>
+
+        <button onClick={() => setIsOpen(true)}>Abrir</button>
+        <ModalConfirmacao open={isOpen} onClose = {() => setIsOpen(false)}>
+          <form style={{display: "flex", flexDirection: "column", justifyContent: "center", width: "200px", gap: "20px"}}>
+            <h2 style={{textAlign: "center"}}>Validar Vacina</h2>
+            <div style={{ display: "flex", flexDirection: "column", }}>
+              <h3 style={{margin: 0, }}>Usuário</h3>
+              <p style={{margin: 0, }}>{nome}</p>
+            </div>
+            <div>
+              <h3 style={{margin: 0, }}>CPF</h3>
+              <p style={{margin: 0, }}>{cpf}</p>
+            </div>
+              <div style={{ display: "flex", flexDirection: "column", }}>
+                <h3 style={{margin: 0, }}>Vacina</h3>
+                <select required name="vacina" style={{margin: 0, backgroundColor: "white" , color: "black", height: "30px", borderRadius: "5px"}}>
+                  <option value="bcg">BCG</option>
+                  <option value="hep b">Hepatite B</option>
+                  <option value="penta">Penta</option>
+                  <option value="polio">Pólio inativada</option>
+                  <option value="rotavirus">Rotavírus</option>
+                  <option value="pneumo 10">Pneumo 10</option>
+                  <option value="meningo c">Meningo C</option>
+                  <option value="febre amarela">Febre Amarela</option>
+                  <option value="triplice viral">Tríplice viral</option>
+                  <option value="tetra viral">Tetra viral</option>
+                  <option value="dtp">DTP</option>
+                  <option value="varicela">Varicela</option>
+                  <option value="dt">dT</option>
+                  <option value="meningococica acwy">Meningocócica ACWY</option>
+                  <option value="hpv quadrivalente">HPV quadrivalente</option>
+                  <option value="dtpa">dTpa</option>
+                  <option value="covid-19">Covid-19</option>
+                  <option value="pneumo 23">Pneumo 23</option>
+                </select>
+              </div>
+              <button style={{marginBottom: "20px", backgroundColor: "white", borderColor: "blue", color: "black", height: "35px", marginTop: "10px"}} type="submit">Validar</button>
+            </form>
+        </ModalConfirmacao>
       </>
   );
 }
