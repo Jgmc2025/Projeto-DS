@@ -45,9 +45,9 @@ function Menu() {
           <p className="card-text">Ranking dos bairros mais vacinados</p>
         </button>
         <button class="card" onClick={Vacinas}>
-          <p class="card-subtitle">Vacinas</p>
+          <p class="card-subtitle">Histórico de Vacinas</p>
           <p className="card-text">
-            Veja as vacinas disponíveis nos postos de saúde
+            Veja o registro de vacinas que você já tomou
           </p>
         </button>
         <button class="card" onClick={Ler}>
