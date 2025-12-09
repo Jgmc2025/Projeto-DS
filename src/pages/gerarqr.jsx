@@ -10,8 +10,9 @@ function Gerar({ valor }) {
       <QRCode
         value={valorParaQR} 
         size={256}
-        style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+        style={{ height: "auto", maxWidth: "100%", width: "50%" }}
       />
+      <h2>Apresente esse QR-Code para validar sua vacinação e receber as Capibas</h2>      
     </>
   )
 }
