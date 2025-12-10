@@ -3,7 +3,8 @@ import NavBar from "../components/navbar";
 
 function Gerar({ valor }) {
   const valorParaQR = valor || 'Validado com sucesso! \nVocê ganhou 250 Capibas.'; 
-
+  
+  
   return (
     <>
       <NavBar />
