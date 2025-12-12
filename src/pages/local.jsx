@@ -29,7 +29,7 @@ function MeuMapa() {
   const mapInstanceRef = useRef(null);
   useEffect(() => {
     if (!mapInstanceRef.current) {
-      var map = L.map('map').setView(locations[0].coords, 13);
+      var map = L.map('map', { zoomControl: false }).setView(locations[0].coords, 13);
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
         minZoom: 12,
@@ -48,7 +48,7 @@ function MeuMapa() {
       <NavBar />
       <div
         id="map"
-        style={{ height: "40vw", width: "100vw" }}
+        style={{ height: "100vw", width: "100vw" }}
       />
     </div>
   );
