@@ -1,0 +1,53 @@
+.btn-voltar-topo {
+  position: fixed;
+  bottom: 20px;
+  right: 15px;
+
+  /* Visual */
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  border-radius: 50%;
+
+  /* Tamanho padrão para monitores grandes */
+  width: 50px;
+  height: 50px;
+  font-size: 1.2rem;
+
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.3s ease, background-color 0.3s, opacity 0.3s;
+
+  opacity: 0.8;
+}
+
+.btn-voltar-topo:hover {
+  transform: scale(1.1);
+  background-color: #172554;
+  opacity: 1;
+
+  /* adaptação pra notebook */
+  @media (max-width: 1440px) {
+    .btn-voltar-topo {
+      width: 40px; /* Botão fica menor */
+      height: 40px; /* Botão fica menor */
+      right: 10px; /* Cola ainda mais na borda */
+      font-size: 1rem; /* Ícone menor */
+      bottom: 15px;
+    }
+  }
+
+  /* esconde o botão no mobile*/
+
+  @media (max-width: 768px) {
+    .btn-voltar-topo {
+      display: none !important;
+    }
+  }
+}

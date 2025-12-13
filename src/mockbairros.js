@@ -134,7 +134,7 @@ export const bairrosData = [
   {
     id: 23,
     nome: "Madalena",
-    vacinados: 20191,
+    vacinados: 24191,
     populacao: 25832,
   },
   {

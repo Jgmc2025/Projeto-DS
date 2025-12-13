@@ -11,7 +11,7 @@
   border: 1px solid #eee;
 
   /* Garante que o card ocupe a largura disponível */
-  width: 100%;
+  width: 95%;
   box-sizing: border-box; /* Garante que o padding não aumente a largura total */
 }
 
@@ -66,4 +66,10 @@
   color: #7dd3fc;
   min-width: 50px;
   text-align: right;
+}
+
+@media (max-width: 768px) {
+  .ranking-item-container {
+    width: 100%;
+  }
 }

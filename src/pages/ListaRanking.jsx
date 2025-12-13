@@ -1,8 +1,9 @@
 import RankingItem from "../components/RankingItem";
-import NavBar from "../components/navbar"
+import NavBar from "../components/navbar";
 import { bairrosData } from "../mockbairros";
 import "../css/ListaRanking.css";
 import { FaChartLine } from "react-icons/fa";
+import BackToTop from "../components/BackToTop";
 
 function Ranking() {
   const listaOrdenada = [...bairrosData].sort((a, b) => {
@@ -12,7 +13,7 @@ function Ranking() {
   });
   return (
     <div className="ranking-pag">
-      <NavBar/>
+      <NavBar />
       {/* Conteúdo Principal */}
       <main className="conteudo-ranking">
         {/* Card do Título da Lista */}
@@ -31,6 +32,7 @@ function Ranking() {
             <RankingItem key={item.id} item={item} ranking={index + 1} />
           ))}
         </div>
+        <BackToTop />
       </main>
     </div>
   );
