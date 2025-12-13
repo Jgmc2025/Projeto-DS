@@ -3,12 +3,8 @@
   flex-direction: column;
   align-items: center;
   font-size: 20px;
-  background-image: linear-gradient(
-    to right,
-    #7ec8e3,
-    #a4d7a7
-  ); /* Define your gradient colors and direction */
-  -webkit-background-clip: text; /* Clip the background to the shape of the text */
+  background-image: linear-gradient(to right, #7ec8e3, #a4d7a7);
+  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -32,14 +28,13 @@
   display: flex;
   gap: 10px;
   height: 65px;
-  padding-right: 30px;
-  width: 550px;
+  width: 580px;
   color: black;
   border: 1px solid #7ec8e3;
   border-radius: 15px;
   font-size: 18px;
   align-items: center;
-  justify-content: right;
+  justify-content: center;
 }
 
 .form-div {
@@ -106,4 +101,30 @@
   font-size: 20px;
   background-image: linear-gradient(to right, #7ec8e3, #a4d7a7);
   margin-top: 30px;
+}
+
+.sem-cadastro {
+  margin-bottom: 10%;
+}
+
+@media (max-width: 768px) {
+  .info {
+    width: 90%;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-left: 2%;
+  }
+  .form-div {
+    width: 90%;
+    border: 0px;
+  }
+  .cpf {
+    width: 85%;
+  }
+  .senha {
+    width: 85%;
+  }
+  .entrar-btn {
+    width: 92%;
+  }
 }

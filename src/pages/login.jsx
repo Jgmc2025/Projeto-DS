@@ -47,11 +47,6 @@ function Login() {
       <p className="texto-topo">Acesse sua conta</p>
 
       <div className="info">
-        <img
-          src="https://www.svgrepo.com/show/24584/info-icon.svg"
-          width="20"
-          height="20"
-        />
         <p>Use seu CPF e senha do Conecta Recife para acessar o sistema</p>
       </div>
 
@@ -89,7 +84,7 @@ function Login() {
           Entrar
         </button>
       </form>
-      <h3>
+      <h3 className="sem-cadastro">
         Não possui cadastro?{" "}
         <a
           target="_blank"
