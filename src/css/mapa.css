@@ -1,0 +1,15 @@
+/* container que segura a NavBar e o Mapa */
+.pagina-mapa {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* força a página a ter exatamente a altura da tela */
+  width: 100vw;
+  overflow: hidden; /* evita barras de rolagem indesejadas */
+}
+
+.mapa-container {
+  width: 100%;
+  /* flex-grow faz o mapa ocupar todo o espaço que sobrou após a NavBar */
+  flex-grow: 1;
+  z-index: 1; /* garante que fique no nível correto de camada */
+}
