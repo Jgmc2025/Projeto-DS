@@ -40,7 +40,8 @@
 
 /* Área principal de conteúdo */
 .conteudo-ranking {
-  padding: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
   width: 100%;
   max-width: none;
   margin: 0 auto;
@@ -52,7 +53,8 @@
   background-color: #f0f7ff;
   border: 1px solid #dbeafe;
   border-radius: 12px;
-  padding: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,13 +76,16 @@
 
 .card-titulo-lista h2 {
   margin: 0;
+  margin-top: 5px;
   font-size: 1rem;
   color: #1e3a8a;
 }
 
 .card-titulo-lista p {
-  margin: 5px 0 0 0;
-  font-size: 0.85rem;
+  margin: 0;
+  margin-bottom: 5px;
+  padding: 10px 10px;
+  font-size: 1rem;
   color: #64748b;
 }
 

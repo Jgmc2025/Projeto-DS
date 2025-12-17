@@ -7,6 +7,11 @@ function Login() {
   const navigate = useNavigate();
   const [valor, setValor] = useState("");
   const [cpf, setCpf] = useState("");
+  const [senha, setSenha] = useState("");
+  const handleSenha = (e) => {
+    let inputSenha = e.target.value;
+    setSenha(inputSenha);
+  };
   const handleCpf = (e) => {
     let inputCpf = e.target.value;
 
@@ -26,15 +31,36 @@ function Login() {
 
     setCpf(inputCpf);
   };
-  function Acessar(event) {
+
+  const dadosParaEnviar = {
+  cpf: cpf.replace(/\D/g, ""), // remove pontos e traços
+  senha: senha };
+
+  async function Acessar(event) {
     event.preventDefault();
-    if (valor === "comum") {
+    const valores = {
+      valor,
+      cpf,
+      senha
+    }
+    fetch("URL_DA__API_AQUI", {
+      method: "POST",
+      headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(dadosParaEnviar), 
+  })
+  .then((response) => {
+   if (valor === "comum") {
       navigate("/menu-comum");
     } else if (valor === "funcionario") {
       navigate("/menu-funcionario");
-    } else {
-      alert("Por favor, selecione um tipo de usuário.");
     }
+  })
+  // .catch((error) => {
+  //  // Lógica de erro (ex: alertar senha incorreta)
+  // });
+  
   }
   return (
     <>
@@ -50,7 +76,7 @@ function Login() {
         <p>Use seu CPF e senha do Conecta Recife para acessar o sistema</p>
       </div>
 
-      <form className="form-div">
+      <form className="form-div" onSubmit={Acessar}>
         <h2 className="login">Login</h2>
 
         <select
@@ -73,13 +99,17 @@ function Login() {
           onChange={handleCpf}
         />
         <h3>Senha</h3>
-        <input className="senha" placeholder="Digite sua senha" />
+        <input 
+          className="senha" 
+          placeholder="Digite sua senha" 
+          value={senha}
+          onChange={handleSenha}
+        />
 
         <button
           type="submit"
           disabled={cpf.length < 14}
           class="entrar-btn"
-          onClick={Acessar}
         >
           Entrar
         </button>

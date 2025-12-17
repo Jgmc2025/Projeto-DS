@@ -5,6 +5,7 @@
 
   background-color: white;
   padding: 15px 20px;
+  margin: auto;
   margin-bottom: 15px; /* Espaço entre um card e outro */
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);

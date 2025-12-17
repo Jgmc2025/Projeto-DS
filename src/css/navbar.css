@@ -5,11 +5,15 @@
   padding: 20px;
 }
 .headernav {
+  display: flex;
   font-size: 1.1rem;
   position: fixed;
   z-index: 1000;
+  width: 100%;
   top: 0;
   left: 0;
+  background-color: white;
+  opacity: 0.8;
 }
 .voltar {
   color: #333;
