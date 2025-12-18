@@ -8,8 +8,11 @@ function Login() {
   const navigate = useNavigate();
   const [valor, setValor] = useState(""); 
   const [cpf, setCpf] = useState("");
-  const [senha, setSenha] = useState(""); 
-
+  const [senha, setSenha] = useState("");
+  const handleSenha = (e) => {
+    let inputSenha = e.target.value;
+    setSenha(inputSenha);
+  };
   const handleCpf = (e) => {
     let inputCpf = e.target.value;
     inputCpf = inputCpf.replace(/\D/g, "");
@@ -21,46 +24,35 @@ function Login() {
     setCpf(inputCpf);
   };
 
+  const dadosParaEnviar = {
+  cpf: cpf.replace(/\D/g, ""), // remove pontos e traços
+  senha: senha };
+
   async function Acessar(event) {
     event.preventDefault();
-
-    if (!valor) {
-      alert("Por favor, selecione um tipo de usuário.");
-      return;
+    const valores = {
+      valor,
+      cpf,
+      senha
     }
-
-    if (!senha) {
-      alert("Por favor, digite sua senha.");
-      return;
+    fetch("URL_DA__API_AQUI", {
+      method: "POST",
+      headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(dadosParaEnviar), 
+  })
+  .then((response) => {
+   if (valor === "comum") {
+      navigate("/menu-comum");
+    } else if (valor === "funcionario") {
+      navigate("/menu-funcionario");
     }
-
-    try {
-      // Tenta conectar com o Backend
-      const response = await axios.post(
-        "http://localhost:3000/api/auth/login", 
-        {
-          username: cpf, 
-          password: senha
-        },
-        { withCredentials: true } 
-      );
-
-      console.log("Login realizado:", response.data);
-
-      if (valor === "comum") {
-        navigate("/menu-comum");
-      } else if (valor === "funcionario") {
-        navigate("/menu-funcionario");
-      }
-
-    } catch (error) {
-      console.error("Erro no login:", error);
-      if (error.response) {
-        alert(error.response.data.message || "Erro ao fazer login.");
-      } else {
-        alert("Erro de conexão com o servidor.");
-      }
-    }
+  })
+  // .catch((error) => {
+  //  // Lógica de erro (ex: alertar senha incorreta)
+  // });
+  
   }
 
   return (
@@ -103,15 +95,14 @@ function Login() {
         <input 
           className="senha" 
           placeholder="Digite sua senha" 
-          type="password"
           value={senha}
-          onChange={(e) => setSenha(e.target.value)} 
+          onChange={handleSenha}
         />
 
         <button
           type="submit"
           disabled={cpf.length < 14}
-          className="entrar-btn"
+          class="entrar-btn"
         >
           Entrar
         </button>
