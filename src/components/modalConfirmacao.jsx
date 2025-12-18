@@ -7,9 +7,11 @@ const MODAL_STYLES = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   backgroundColor: '#FFF',
-  padding: '50px',
+  padding: '30px',
   zIndex: 1000,
-  borderRadius: '5px'
+  borderRadius: '15px',
+  boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+  border: '1px solid #a4d7a7'
 }
 
 const OVERLAY_STYLES = {
@@ -19,18 +21,25 @@ const OVERLAY_STYLES = {
   right: 0,
   bottom: 0,
   backgroundColor: 'rgba(0, 0, 0, .7)',
-  zIndex: 1000
+  zIndex: 1000,
+  backdropFilter: 'blur(3px)'
 }
 
-export default function ModalConfirmacao ({open, children, onClose}) {
+export default function ModalConfirmacao ({ open, children, onClose }) {
     if (!open) return null;
 
     return ReactDom.createPortal (
     <>
-      <div style={OVERLAY_STYLES}/>
+      <div style={OVERLAY_STYLES} onClick={onClose} />
       <div style={MODAL_STYLES}>
         {children}
-        <button style={{width: "100%", marginBottom: "20px", backgroundColor: "white", borderColor: "blue", color: "black", height: "35px"}} onClick={onClose}>Cancelar</button>
+        <button 
+          className="entrar-btn" 
+          style={{ width: "100%", marginTop: "10px", backgroundColor: "#eee", color: "#333" }} 
+          onClick={onClose}
+        >
+          Cancelar
+        </button>
       </div>
     </>,
     document.getElementById('portal')

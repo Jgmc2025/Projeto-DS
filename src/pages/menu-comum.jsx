@@ -85,8 +85,8 @@ function Menu() {
         </button>
 
         <button className="card" onClick={() => navigate("/qrcode-gen")}>
-          <p className="card-subtitle">Criar QR-Code</p>
-          <p className="card-text">Valide sua vacinação e ganhe Capibas</p>
+          <p className="card-subtitle">Gerar meu QR-Code</p>
+          <p className="card-text">Mostre seu QR-Code para o profissinal da saúde, valide sua vacinação e ganhe Capibas</p>
         </button>
 
         <button className="card" onClick={() => navigate("/ranking")}>
