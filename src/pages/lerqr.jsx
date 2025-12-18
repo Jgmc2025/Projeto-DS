@@ -97,26 +97,26 @@ function Ler({ onSucesso }) {
           autoPlay
           muted
           className="w-full h-auto rounded-lg border"
-          style={{ transform: 'scaleX(-1)' }}
+          style={{ transform: 'scaleX(-1)', width: '80%' }}
         ></video>
         <p className="mt-4 text-center font-medium">{data}</p>
       </div>
-
-        <button onClick={() => setIsOpen(true)}>Abrir</button>
+        <p>Ou insira as informações do usuário manualmente</p>
+        <button onClick={() => setIsOpen(true)}>Inserir</button>
         <ModalConfirmacao open={isOpen} onClose = {() => setIsOpen(false)}>
           <form style={{display: "flex", flexDirection: "column", justifyContent: "center", width: "200px", gap: "20px"}}>
             <h2 style={{textAlign: "center"}}>Validar Vacina</h2>
-            <div style={{ display: "flex", flexDirection: "column", }}>
-              <h3 style={{margin: 0, }}>Usuário</h3>
-              <p style={{margin: 0, }}>{nome}</p>
+            <div style={{ display: "flex", flexDirection: "column"}}>
+              <h3 style={{margin: 0}}>Usuário</h3>
+              <input type="text" style={{margin: 0, backgroundColor: "white", color: "black", borderRadius: "5px"}}></input>
             </div>
             <div>
-              <h3 style={{margin: 0, }}>CPF</h3>
-              <p style={{margin: 0, }}>{cpf}</p>
+              <h3 style={{margin: 0}}>CPF</h3>
+              <input type="text" style={{margin: 0, backgroundColor: "white", color: "black", borderRadius: "5px"}}></input>
             </div>
               <div style={{ display: "flex", flexDirection: "column", }}>
                 <h3 style={{margin: 0, }}>Vacina</h3>
-                <select required name="vacina" style={{margin: 0, backgroundColor: "white" , color: "black", height: "30px", borderRadius: "5px"}}>
+                <select required name="vacina" style={{margin: 0, backgroundColor: "white", color: "black", height: "30px", borderRadius: "5px"}}>
                   <option value="bcg">BCG</option>
                   <option value="hep b">Hepatite B</option>
                   <option value="penta">Penta</option>
