@@ -26,7 +26,6 @@ function Menu() {
         <img src={logo} width="125" height="125" />
         <h1>Capivac</h1>
       </div>
-      <h1>hi</h1>
       <p className="subtitle">
         Sistema de incentivo de vacinação no Recife
         <br />

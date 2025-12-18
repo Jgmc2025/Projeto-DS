@@ -77,10 +77,7 @@ function Menu() {
             
             <span className="info-item"><strong>Bairro:</strong> {usuario.bairro}</span>
             
-            {/* Botão com símbolo de lápis inclinado */}
-            <button className="edit-btn" onClick={EditarDados} title="Atualizar meus dados">
-              ✎
-            </button>
+            
           </div>
         ) : (
           <p className="loading-text">Carregando perfil...</p>
