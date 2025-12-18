@@ -1,9 +1,9 @@
-/* Container do Cabeçalho */
+/* --- Cabeçalho e Identidade --- */
 .header-container {
   display: flex;
-  justify-content: center; /* Centraliza a logo */
+  justify-content: center;
   align-items: center;
-  position: relative; /* Permite posicionar o botão de logout em relação a este container */
+  position: relative;
   padding: 20px;
   width: 100%;
 }
@@ -12,14 +12,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 18px; /* Reduzi um pouco para não ocupar a tela toda */
+  font-size: 18px;
   background-image: linear-gradient(to right, #7ec8e3, #a4d7a7);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Estilo do Botão de Logout */
 .logout-btn {
   position: absolute;
   right: 30px;
@@ -38,7 +37,7 @@
   background-color: #cc0000;
 }
 
-/* Mantendo os outros estilos */
+/* --- Menu e Informações do Usuário --- */
 .subtitle {
   font-size: 20px;
   font-weight: bold;
@@ -46,6 +45,25 @@
   text-align: center;
 }
 
+.user-info-bar {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 10px auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  max-width: 900px;
+}
+
+.user-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 30px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* --- Cards de Funcionalidades --- */
 .cards {
   display: flex;
   justify-content: center;
@@ -73,20 +91,103 @@
   transform: translateY(-5px);
 }
 
-.user-info-bar {
-  background: #fff;
-  border-radius: 12px;
-  padding: 15px;
-  margin: 10px auto;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  max-width: 900px;
+/* --- Layout de Cadastro (Ajustado para crescimento do fundo) --- */
+.main-content-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.user-data {
+.form-div {
+  /* Força o container a ser flexível e crescer com o conteúdo */
   display: flex;
-  align-items: center;
-  justify-content: center;
-  column-gap: 30px;
-  margin-top: 10px;
-  font-size: 14px;
+  flex-direction: column;
+  height: auto; 
+  min-height: fit-content;
 }
+
+.side-panel {
+  flex: 1;
+  min-width: 400px;
+  margin: 0 !important;
+  max-height: 80vh; /* Limita a altura para não sumir da tela */
+}
+
+/* Container da Lista (Agora com scroll interno funcional) */
+.vaccine-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  padding-right: 10px;
+  overflow-y: auto; /* O scroll acontece aqui dentro, respeitando a borda branca */
+  flex-grow: 1; /* Ocupa o espaço disponível no painel */
+}
+
+/* Customização da Scrollbar para não poluir o visual */
+.vaccine-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+.vaccine-list-container::-webkit-scrollbar-thumb {
+  background-color: #a4d7a7;
+  border-radius: 10px;
+}
+
+/* --- Cards de Vacina e Badges --- */
+.vaccine-card {
+  background: #fdfdfd;
+  border: 1px solid #e0e0e0;
+  border-left: 5px solid #a4d7a7;
+  border-radius: 8px;
+  padding: 15px;
+  transition: transform 0.2s;
+}
+
+.vaccine-card:hover {
+  transform: translateX(5px);
+  border-color: #7ec8e3;
+}
+
+.vaccine-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.vaccine-card-name {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.status-badge {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+.status-badge.active { background: #e6f4ea; color: #1e7e34; }
+.status-badge.inactive { background: #fce8e6; color: #d93025; }
+
+.vaccine-date { font-size: 12px; color: #888; }
+
+/* --- Auxiliares --- */
+.edit-btn {
+  background: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.btn-secondary { background-color: #888 !important; margin-top: 10px; }

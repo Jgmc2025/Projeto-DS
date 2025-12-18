@@ -63,6 +63,7 @@ function Menu() {
               <span className="info-item"><strong>CPF:</strong> {usuario.cpf}</span>            
               <span className="info-item"><strong>Bairro:</strong> {usuario.bairro}</span>
               <span className="info-item"><strong>Tipo:</strong> {usuario.role}</span>
+              <span className="info-item"><strong>Id de {usuario.role}: {usuario.id}</strong></span>
               <button className="edit-btn" onClick={() => navigate("/atualizar-dados")} title="Atualizar meus dados">✎</button>
             </div>
           </div>
