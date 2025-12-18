@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; // Importado o axios
 import logo from "../assets/logo.png";
 import "../css/login.css";
 
 function Login() {
   const navigate = useNavigate();
-  const [valor, setValor] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [senha, setSenha] = useState("");
+  const [username, setCpf] = useState("");
+  const [password, setSenha] = useState("");
+  
   const handleSenha = (e) => {
     let inputSenha = e.target.value;
     setSenha(inputSenha);
   };
+
   const handleCpf = (e) => {
     let inputCpf = e.target.value;
 
@@ -28,45 +30,44 @@ function Login() {
       .replace(/(\d{3})(\d{1,2})$/, "$1-$2"); // coloca o traço
 
     // atualiza o estado
-
     setCpf(inputCpf);
   };
 
-  const dadosParaEnviar = {
-  cpf: cpf.replace(/\D/g, ""), // remove pontos e traços
-  senha: senha };
-
+  // Mantido o nome da função conforme o original
   async function Acessar(event) {
     event.preventDefault();
-    const valores = {
-      valor,
-      cpf,
-      senha
+
+    // Ajustado para o que o seu backend espera (username/password)
+    const dadosParaEnviar = {
+      username: username.replace(/\D/g, ""), 
+      password: password 
+    };
+
+    try {
+      // Alterado para Axios com withCredentials para suportar o token HTTP ONLY
+      const response = await axios.post("http://localhost:3000/api/auth/login", dadosParaEnviar, {
+        withCredentials: true
+      });
+
+      // Acessando os dados via response.data (padrão do Axios)
+      if (response.data.role === "user") {
+        navigate("/menu-comum");
+      } else if (response.data.role === "admin") {
+        navigate("/menu-funcionario");
+      }
+
+    } catch (error) {
+      // Lógica de erro amigável
+      console.error("Erro no login", error);
+      alert(error.response?.data?.message || "Erro ao realizar login");
     }
-    fetch("URL_DA__API_AQUI", {
-      method: "POST",
-      headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(dadosParaEnviar), 
-  })
-  .then((response) => {
-   if (valor === "comum") {
-      navigate("/menu-comum");
-    } else if (valor === "funcionario") {
-      navigate("/menu-funcionario");
-    }
-  })
-  // .catch((error) => {
-  //  // Lógica de erro (ex: alertar senha incorreta)
-  // });
-  
   }
+
   return (
     <>
       {/*Tela de login*/}
       <div className="area-logo">
-        <img src={logo} width="125" height="125" />
+        <img src={logo} width="125" height="125" alt="logo" />
         <h1>Capivac</h1>
       </div>
 
@@ -79,37 +80,27 @@ function Login() {
       <form className="form-div" onSubmit={Acessar}>
         <h2 className="login">Login</h2>
 
-        <select
-          className="selecionar"
-          id="opcoes"
-          value={valor}
-          onChange={(e) => setValor(e.target.value)}
-        >
-          <option value="">--Selecione--</option>
-          <option value="comum">Usuário comum</option>
-          <option value="funcionario">Funcionário</option>
-        </select>
-
         <h3>CPF</h3>
         <input
           className="cpf"
           placeholder="000.000.000-00"
           maxLength={14}
-          value={cpf}
+          value={username}
           onChange={handleCpf}
         />
         <h3>Senha</h3>
         <input 
+          type="password" // Adicionado apenas para segurança visual
           className="senha" 
           placeholder="Digite sua senha" 
-          value={senha}
+          value={password}
           onChange={handleSenha}
         />
 
         <button
           type="submit"
-          disabled={cpf.length < 14}
-          class="entrar-btn"
+          disabled={username.length < 14}
+          className="entrar-btn"
         >
           Entrar
         </button>
@@ -118,6 +109,7 @@ function Login() {
         Não possui cadastro?{" "}
         <a
           target="_blank"
+          rel="noreferrer"
           href="https://login.recife.pe.gov.br/auth/realms/recife/login-actions/registration?client_id=psp&tab_id=aptEbOaFXRs"
         >
           Clique aqui
@@ -126,4 +118,5 @@ function Login() {
     </>
   );
 }
+
 export default Login;

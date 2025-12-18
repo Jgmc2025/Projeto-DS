@@ -8,6 +8,7 @@ import MenuFuncionario from "./menu-funcionario";
 import MenuComum from "./menu-comum";
 import Cards from "./vacinas-disponiveis";
 import Ranking from "./ListaRanking";
+import AtualizarDados from "./atualizar-dados";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/mapa" element={<Local />} />
       <Route path="/menu-funcionario" element={<MenuFuncionario />} />
       <Route path="/menu-comum" element={<MenuComum />} />
+      <Route path="atualizar-dados" element={<AtualizarDados/>} />
       <Route path="/vacinas-disponiveis" element={<Cards />} />
       <Route path="/ranking" element={<Ranking />} />
       <Route path="*" element={<div>Página não encontrada</div>} />
