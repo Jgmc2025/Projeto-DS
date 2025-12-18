@@ -1,62 +1,113 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import logo from "../assets/logo.png";
 import "../css/menu.css";
 
-function Menu() {
+function MenuFuncionario() {
   const navigate = useNavigate();
-  function Mapa() {
-    navigate("/mapa");
-  }
-  function Ranking() {
-    navigate("/ranking");
-  }
-  function Vacinas() {
-    navigate("/vacinas-disponiveis");
-  }
-  function Gen() {
-    navigate("/qrcode-gen");
-  }
-  function Ler() {
-    navigate("/qrcode-scan");
-  }
+  const [usuario, setUsuario] = useState(null);
+
+  // Busca os dados do funcionário ao montar a tela
+  useEffect(() => {
+    const buscarDadosUsuario = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/api/users", {
+          withCredentials: true 
+        });
+        setUsuario(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar dados do funcionário:", error);
+        if (error.response && error.response.status === 401) {
+          navigate("/");
+        }
+      }
+    };
+    buscarDadosUsuario();
+  }, [navigate]);
+
+  // Função de Logout (POST para limpar cookie HttpOnly)
+  const handleLogout = async () => {
+    try {
+      await axios.post("http://localhost:3000/api/auth/logout", {}, { withCredentials: true });
+      alert("Deslogado com sucesso!");
+      navigate("/");
+    } catch (error) {
+      console.error("Erro ao sair:", error);
+      navigate("/");
+    }
+  };
+
   return (
     <>
-      {/*Tela de menu*/}
-      <div className="area-logo">
-        <img src={logo} width="125" height="125" />
-        <h1>Capivac</h1>
+      <header className="header-container">
+        {/* Logo Centralizada */}
+        <div className="area-logo">
+          <img src={logo} width="100" height="100" alt="Capivac Logo" />
+          <h1>Capivac</h1>
+        </div>
+
+        {/* Botão de Logout no Canto Direito */}
+        <button className="logout-btn" onClick={handleLogout}>
+          Sair
+        </button>
+      </header>
+      
+      {/* Barra de Informações (Modal Horizontal) */}
+      <div className="user-info-bar">
+        {usuario ? (
+          <div className="info-content">
+            <span className="welcome-text">
+              Bem-vindo, <strong>{usuario.nome ? usuario.nome.split(' ')[0] : "Funcionário"}</strong>
+            </span>
+            
+            <div className="user-data">
+              <span className="info-item"><strong>CPF:</strong> {usuario.cpf}</span>            
+              <span className="info-item"><strong>Bairro:</strong> {usuario.bairro}</span>
+              <span className="info-item"><strong>Tipo:</strong> {usuario.role}</span>
+              <button className="edit-btn" onClick={() => navigate("/atualizar-dados")} title="Atualizar meus dados">✎</button>
+            </div>
+          </div>
+        ) : (
+          <p className="loading-text">Carregando perfil administrativo...</p>
+        )}
       </div>
-      <h1>hi</h1>
+
       <p className="subtitle">
-        Sistema de incentivo de vacinação no Recife
+        Painel Administrativo - Incentivo de Vacinação
         <br />
-        Simples, rápido e seguro
+        Gestão de registros e validações
       </p>
+
       <div className="cards">
-        <button class="card" onClick={Mapa}>
-          <p class="card-subtitle">Mapa</p>
+        {/* Card exclusivo do Funcionário: Ler QR-Code */}
+        <button className="card" onClick={() => navigate("/qrcode-scan")} style={{borderColor: "#007bff"}}>
+          <p className="card-subtitle" style={{color: "#007bff"}}>Ler QR-Code</p>
+          <p className="card-text">Escaneie o QR-Code do paciente para validar a vacinação</p>
+        </button>
+
+        <button className="card" onClick={() => navigate("/mapa")}>
+          <p className="card-subtitle">Mapa</p>
           <p className="card-text">Mapa dos postos de vacinação</p>
         </button>
-        <button class="card" onClick={Gen}>
-          <p class="card-subtitle">Criar QR-Code</p>
+
+        <button className="card" onClick={() => navigate("/qrcode-gen")}>
+          <p className="card-subtitle">Criar QR-Code</p>
           <p className="card-text">Valide sua vacinação e ganhe Capibas</p>
         </button>
-        <button class="card" onClick={Ranking}>
-          <p class="card-subtitle">Ranking</p>
+
+        <button className="card" onClick={() => navigate("/ranking")}>
+          <p className="card-subtitle">Ranking</p>
           <p className="card-text">Ranking dos bairros mais vacinados</p>
         </button>
-        <button class="card" onClick={Vacinas}>
-          <p class="card-subtitle">Histórico de Vacinas</p>
-          <p className="card-text">
-            Veja o registro de vacinas que você já tomou
-          </p>
-        </button>
-        <button class="card" onClick={Ler}>
-          <p class="card-subtitle">Ler QR-Code</p>
-          <p className="card-text">Escaneie o QR-Code do paciente para validar a vacinação</p>
+
+        <button className="card" onClick={() => navigate("/vacinas-disponiveis")}>
+          <p className="card-subtitle">Histórico de Vacinas</p>
+          <p className="card-text">Veja o registro de vacinas que você já tomou</p>
         </button>
       </div>
     </>
   );
 }
-export default Menu;
+
+export default MenuFuncionario;
