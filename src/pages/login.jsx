@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; 
 import logo from "../assets/logo.png";
 import "../css/login.css";
 
 function Login() {
   const navigate = useNavigate();
-  const [valor, setValor] = useState("");
+  const [valor, setValor] = useState(""); 
   const [cpf, setCpf] = useState("");
   const [senha, setSenha] = useState("");
   const handleSenha = (e) => {
@@ -14,21 +15,12 @@ function Login() {
   };
   const handleCpf = (e) => {
     let inputCpf = e.target.value;
-
-    // lógica de substituir qualquer não número por nada
     inputCpf = inputCpf.replace(/\D/g, "");
-
-    // limitação de caracteres do cpf (11)
     inputCpf = inputCpf.slice(0, 11);
-
-    // formatação
     inputCpf = inputCpf
-      .replace(/(\d{3})(\d)/, "$1.$2") // coloca o 1 ponto
-      .replace(/(\d{3})(\d)/, "$1.$2") // coloca o 2 ponto
-      .replace(/(\d{3})(\d{1,2})$/, "$1-$2"); // coloca o traço
-
-    // atualiza o estado
-
+      .replace(/(\d{3})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
     setCpf(inputCpf);
   };
 
@@ -62,11 +54,11 @@ function Login() {
   // });
   
   }
+
   return (
     <>
-      {/*Tela de login*/}
       <div className="area-logo">
-        <img src={logo} width="125" height="125" />
+        <img src={logo} width="125" height="125" alt="Logo Capivac" />
         <h1>Capivac</h1>
       </div>
 
@@ -98,6 +90,7 @@ function Login() {
           value={cpf}
           onChange={handleCpf}
         />
+        
         <h3>Senha</h3>
         <input 
           className="senha" 
@@ -114,16 +107,19 @@ function Login() {
           Entrar
         </button>
       </form>
+      
       <h3 className="sem-cadastro">
         Não possui cadastro?{" "}
         <a
           target="_blank"
-          href="https://login.recife.pe.gov.br/auth/realms/recife/login-actions/registration?client_id=psp&tab_id=aptEbOaFXRs"
+          href="https://login.recife.pe.gov.br/"
+          rel="noreferrer"
         >
-          Clique aqui
+          Cadastre-se no Conecta Recife
         </a>
       </h3>
     </>
   );
 }
+
 export default Login;
