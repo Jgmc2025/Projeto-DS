@@ -64,9 +64,6 @@ function MenuFuncionario() {
             <div className="user-data">
               <span className="info-item"><strong>CPF:</strong> {usuario.cpf}</span>            
               <span className="info-item"><strong>Bairro:</strong> {usuario.bairro}</span>
-              <span className="info-item"><strong>Tipo:</strong> {usuario.role}</span>
-              <span className="info-item"><strong>Id de {usuario.role}: {usuario.id}</strong></span>
-              <button className="edit-btn" onClick={() => navigate("/atualizar-dados")} title="Atualizar meus dados">✎</button>
             </div>
           </div>
         ) : (
@@ -82,15 +79,15 @@ function MenuFuncionario() {
 
       <div className="cards">
         {/* Card exclusivo do Funcionário: Ler QR-Code */}
-        
-        <button className="card" onClick={() => navigate("/cadastrar-vacina")} style={{borderColor: "#007bff"}}>
-          <p className="card-subtitle" style={{color: "#007bff"}}>Cadastrar Nova Vacina</p>
-          <p className="card-text">Crie uma nova vacina que poderá ter tomada pelos usuarios</p>
+
+        <button className="card" onClick={() => navigate("/qrcode-scan")}>
+          <p className="card-subtitle">Validar vacina</p>
+          <p className="card-text">Escaneie o QR-Code do usuário para validar</p>
         </button>
 
-        <button className="card" onClick={() => navigate("/qrcode-scan")} style={{borderColor: "#007bff"}}>
-          <p className="card-subtitle" style={{color: "#007bff"}}>Ler QR-Code ou inserir Id do usuario</p>
-          <p className="card-text">Escaneie o QR-Code do paciente para validar/criar a vacinação</p>
+        <button className="card" onClick={() => navigate("/qrcode-gen")}>
+          <p className="card-subtitle">Gerar meu QR-Code</p>
+          <p className="card-text">Validar vacinação por QR Code</p>
         </button>
 
         <button className="card" onClick={() => navigate("/mapa")}>

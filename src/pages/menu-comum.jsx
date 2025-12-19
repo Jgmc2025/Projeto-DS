@@ -62,9 +62,6 @@ function Menu() {
             <div className="user-data">
               <span className="info-item"><strong>CPF:</strong> {usuario.cpf}</span>            
               <span className="info-item"><strong>Bairro:</strong> {usuario.bairro}</span>
-              <span className="info-item"><strong>Tipo:</strong> {usuario.role}</span>
-              <span className="info-item"><strong>Id de {usuario.role}: {usuario.id}</strong></span>
-              <button className="edit-btn" onClick={() => navigate("/atualizar-dados")} title="Atualizar meus dados">✎</button>
             </div>
           </div>
         ) : (
@@ -86,7 +83,7 @@ function Menu() {
 
         <button className="card" onClick={() => navigate("/qrcode-gen")}>
           <p className="card-subtitle">Gerar meu QR-Code</p>
-          <p className="card-text">Mostre seu QR-Code para o profissinal da saúde, valide sua vacinação e ganhe Capibas</p>
+          <p className="card-text">Validar vacinação por QR Code</p>
         </button>
 
         <button className="card" onClick={() => navigate("/ranking")}>

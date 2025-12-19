@@ -51,10 +51,8 @@ function Login() {
 
       // Acessando os dados via response.data (padrão do Axios)
       if (response.data.role === "user") {
-        alert("Vou para menu-comum")
         navigate("/menu-comum");
       } else if (response.data.role === "admin") {
-        alert("Vou para menu-funcionario")
         navigate("/menu-funcionario");
       }
 

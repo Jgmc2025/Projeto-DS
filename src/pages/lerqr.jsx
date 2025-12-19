@@ -125,7 +125,7 @@ function Ler() {
       <NavBar />
       <div className="area-logo" style={{ marginTop: '20px' }}>
         <img src={logo} width="80" height="80" alt="logo" />
-        <h1>Capivacc Scanner</h1>
+        <h1>Escanear QR-Code</h1>
       </div>
 
       <div className="p-4 w-full max-w-md mx-auto" style={{ textAlign: 'center' }}>
@@ -157,14 +157,30 @@ function Ler() {
       <ModalConfirmacao open={isOpen} onClose={() => setIsOpen(false)}>
         <form onSubmit={handleSubmitVacina} style={{ display: "flex", flexDirection: "column", width: "280px", gap: "15px" }}>
           <h2 style={{ textAlign: "center" }}>Validar Vacina</h2>
-          <input required placeholder="ID do usuario (Ver na pagina inicial do usuario)" type="number" value={usuarioId} onChange={(e)=>setUsuarioId(e.target.value)} className="senha" />
-          <input required placeholder="CPF" value={cpf} onChange={(e)=>setCpf(e.target.value)} className="senha" />
-          <select required className="senha" value={vacinaId} onChange={(e)=>setVacinaId(e.target.value)}>
-            <option value="">Selecione a vacina</option>
-            {vacinasDisponiveis.map(v => <option key={v.id} value={v.id}>{v.nome}</option>)}
-          </select>
-          <input placeholder="Local" value={local} onChange={(e)=>setLocal(e.target.value)} className="senha" />
-          <button className="entrar-btn" type="submit" disabled={loading}>{loading ? "Salvando..." : "Validar"}</button>
+          <input required placeholder="ID do usuario" type="number" value={usuarioId} onChange={(e)=>setUsuarioId(e.target.value)} className="senha" style={{width: "80%", margin: "auto"}}/>
+          <input required placeholder="CPF" value={cpf} onChange={(e)=>setCpf(e.target.value)} className="senha" style={{width: "80%", margin: "auto"}}/>
+          <select required name="vacina" className="senha" style={{width: "80%", margin: "auto"}}>
+                  <option value="bcg">BCG</option>
+                  <option value="hep b">Hepatite B</option>
+                  <option value="penta">Penta</option>
+                  <option value="polio">Pólio inativada</option>
+                  <option value="rotavirus">Rotavírus</option>
+                  <option value="pneumo 10">Pneumo 10</option>
+                  <option value="meningo c">Meningo C</option>
+                  <option value="febre amarela">Febre Amarela</option>
+                  <option value="triplice viral">Tríplice viral</option>
+                  <option value="tetra viral">Tetra viral</option>
+                  <option value="dtp">DTP</option>
+                  <option value="varicela">Varicela</option>
+                  <option value="dt">dT</option>
+                  <option value="meningococica acwy">Meningocócica ACWY</option>
+                  <option value="hpv quadrivalente">HPV quadrivalente</option>
+                  <option value="dtpa">dTpa</option>
+                  <option value="covid-19">Covid-19</option>
+                  <option value="pneumo 23">Pneumo 23</option>
+                </select>
+          <input placeholder="Local" value={local} onChange={(e)=>setLocal(e.target.value)} className="senha" style={{width: "80%", margin: "auto"}}/>
+          <button className="entrar-btn" type="submit" disabled={loading} style={{width: "80%", margin: "auto"}}>{loading ? "Salvando..." : "Validar"}</button>
         </form>
       </ModalConfirmacao>
     </>

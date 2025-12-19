@@ -1,9 +1,6 @@
 .msg-div {
+    margin: auto;
     margin-top: 50px;
-    margin-left: 50%;
-    width: 90%;
-    display: flex;                
-    transform: translateX(-50%); 
     font-size: 22px;
     text-align: center;
     z-index: 10;
