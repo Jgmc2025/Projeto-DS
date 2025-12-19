@@ -52,24 +52,24 @@ function Menu() {
         </button>
       </header>
       
-      <div className="user-info-bar">
+      <div className="barra-info-usuario">
         {usuario ? (
-          <div className="info-content">
-            <span className="welcome-text">
+          <div className="info-conteudo">
+            <span className="texto-boas-vindas">
               Bem-vindo, <strong>{usuario.nome ? usuario.nome.split(' ')[0] : "Usuário"}</strong>
             </span>
             
-            <div className="user-data">
+            <div className="dados-usuarios">
               <span className="info-item"><strong>CPF:</strong> {usuario.cpf}</span>            
               <span className="info-item"><strong>Bairro:</strong> {usuario.bairro}</span>
             </div>
           </div>
         ) : (
-          <p className="loading-text">Carregando perfil...</p>
+          <p className="texto-carregando">Carregando perfil...</p>
         )}
       </div>
 
-      <p className="subtitle">
+      <p className="subtitulo">
         Sistema de incentivo de vacinação no Recife
         <br />
         Simples, rápido e seguro
@@ -77,23 +77,23 @@ function Menu() {
 
       <div className="cards">
         <button className="card" onClick={() => navigate("/mapa")}>
-          <p className="card-subtitle">Mapa</p>
-          <p className="card-text">Mapa dos postos de vacinação</p>
+          <p className="card-subtitulo">Mapa</p>
+          <p className="card-texto">Mapa dos postos de vacinação</p>
         </button>
 
         <button className="card" onClick={() => navigate("/qrcode-gen")}>
-          <p className="card-subtitle">Gerar meu QR-Code</p>
-          <p className="card-text">Validar vacinação por QR Code</p>
+          <p className="card-subtitulo">Gerar meu QR-Code</p>
+          <p className="card-texto">Validar vacinação por QR Code</p>
         </button>
 
         <button className="card" onClick={() => navigate("/ranking")}>
-          <p className="card-subtitle">Ranking</p>
-          <p className="card-text">Ranking dos bairros mais vacinados</p>
+          <p className="card-subtitulo">Ranking</p>
+          <p className="card-texto">Ranking dos bairros mais vacinados</p>
         </button>
 
         <button className="card" onClick={() => navigate("/vacinas-disponiveis")}>
-          <p className="card-subtitle">Histórico de Vacinas</p>
-          <p className="card-text">Veja o registro de vacinas que você já tomou</p>
+          <p className="card-subtitulo">Histórico de Vacinas</p>
+          <p className="card-texto">Veja o registro de vacinas que você já tomou</p>
         </button>
       </div>
     </>

@@ -4,7 +4,7 @@ import "leaflet/dist/leaflet.css";
 import NavBar from "../components/navbar";
 import "../css/mapa.css";
 
-const locations = [
+const locs = [
   {
     coords: [-8.058467379904435, -34.90690108834618],
     name: "Policlínica Lessa de Andrade",
@@ -88,12 +88,12 @@ const locations = [
 ];
 
 function MeuMapa() {
-  const mapInstanceRef = useRef(null);
+  const mapInstanciaRef = useRef(null);
 
   useEffect(() => {
-    if (!mapInstanceRef.current) {
+    if (!mapInstanciaRef.current) {
       var map = L.map("map", { zoomControl: false }).setView(
-        locations[0].coords,
+        locs[0].coords,
         13
       );
 
@@ -108,14 +108,14 @@ function MeuMapa() {
         L.marker(location.coords).addTo(map).bindTooltip(location.name);
       });
 
-      mapInstanceRef.current = map;
+      mapInstanciaRef.current = map;
     }
 
     // cleanup pra evitar erros de memória se o componente desmontar
     return () => {
-      if (mapInstanceRef.current) {
-        mapInstanceRef.current.remove();
-        mapInstanceRef.current = null;
+      if (mapInstanciaRef.current) {
+        mapInstanciaRef.current.remove();
+        mapInstanciaRef.current = null;
       }
     };
   }, []);

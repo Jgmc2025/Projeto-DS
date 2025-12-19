@@ -6,8 +6,8 @@ import "../css/login.css";
 
 function Login() {
   const navigate = useNavigate();
-  const [username, setCpf] = useState("");
-  const [password, setSenha] = useState("");
+  const [usuario, setCpf] = useState("");
+  const [senha, setSenha] = useState("");
   
   const handleSenha = (e) => {
     let inputSenha = e.target.value;
@@ -33,26 +33,24 @@ function Login() {
     setCpf(inputCpf);
   };
 
-  // Mantido o nome da função conforme o original
   async function Acessar(event) {
     event.preventDefault();
 
-    // Ajustado para o que o seu backend espera (username/password)
     const dadosParaEnviar = {
-      username: username.replace(/\D/g, ""), 
-      password: password 
+      username: usuario.replace(/\D/g, ""), 
+      password: senha 
     };
 
     try {
       // Alterado para Axios com withCredentials para suportar o token HTTP ONLY
-      const response = await axios.post("http://localhost:3000/api/auth/login", dadosParaEnviar, {
+      const resposta = await axios.post("http://localhost:3000/api/auth/login", dadosParaEnviar, {
         withCredentials: true
       });
 
       // Acessando os dados via response.data (padrão do Axios)
-      if (response.data.role === "user") {
+      if (resposta.data.role === "user") {
         navigate("/menu-comum");
-      } else if (response.data.role === "admin") {
+      } else if (resposta.data.role === "admin") {
         navigate("/menu-funcionario");
       }
 
@@ -85,21 +83,21 @@ function Login() {
           className="cpf"
           placeholder="000.000.000-00"
           maxLength={14}
-          value={username}
+          value={usuario}
           onChange={handleCpf}
         />
         <h3>Senha</h3>
         <input 
-          type="password" // Adicionado apenas para segurança visual
+          type="password" 
           className="senha" 
           placeholder="Digite sua senha" 
-          value={password}
+          value={senha}
           onChange={handleSenha}
         />
 
         <button
           type="submit"
-          disabled={username.length < 14}
+          disabled={usuario.length < 14}
           className="entrar-btn"
         >
           Entrar

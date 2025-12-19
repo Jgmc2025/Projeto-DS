@@ -16,7 +16,7 @@ function Ler() {
   const [usuarioId, setUsuarioId] = useState("");
   const [cpf, setCpf] = useState("");
   const [vacinaId, setVacinaId] = useState("");
-  const [local, setLocal] = useState("Unidade de Saúde Recife");
+  const [local, setLocal] = useState("");
   const [vacinasDisponiveis, setVacinasDisponiveis] = useState([]);
 
   const videoRef = useRef(null);
@@ -128,7 +128,7 @@ function Ler() {
         <h1>Escanear QR-Code</h1>
       </div>
 
-      <div className="p-4 w-full max-w-md mx-auto" style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: 'center' }}>
         <div style={{ position: 'relative', borderRadius: '15px', overflow: 'hidden', border: '4px solid #a4d7a7' }}>
           <video 
             ref={videoRef} 

@@ -38,14 +38,14 @@
 }
 
 /* --- Menu e Informações do Usuário --- */
-.subtitle {
+.subtitulo {
   font-size: 20px;
   font-weight: bold;
   color: #888;
   text-align: center;
 }
 
-.user-info-bar {
+.barra-info-usuario {
   background: #fff;
   border-radius: 12px;
   padding: 15px;
@@ -54,7 +54,7 @@
   max-width: 900px;
 }
 
-.user-data {
+.dados-usuarios {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -192,14 +192,14 @@
 
 .btn-secondary { background-color: #888 !important; margin-top: 10px; }
 
-.card-subtitle {
+.card-subtitulo {
   font-size: 24px;
   font-weight: bold;
   text-align: center;
   margin-bottom: -10px;
 }
 
-.card-text {
+.card-texto {
   font-size: 20px;
   text-align: center;
 }

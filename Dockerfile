@@ -1,10 +1,9 @@
-# Usa uma imagem leve do Node
 FROM node:22-alpine
 
 # Define a pasta de trabalho dentro do container
 WORKDIR /app
 
-# 1. Copia APENAS os arquivos de dependência primeiro
+# 1. Copia os arquivos de dependência primeiro
 COPY package.json package-lock.json ./
 
 # 2. Instala as dependências (Isso cria a node_modules DO LINUX)

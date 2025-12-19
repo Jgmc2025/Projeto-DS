@@ -54,7 +54,7 @@ function GerarQR() {
               />
             </div>
             <h3 style={{ marginTop: "20px", color: "#333" }}>{usuario.nome}</h3>
-            <p className="card-text" style={{ fontSize: "14px", color: "#666" }}>
+            <p className="card-texto" style={{ fontSize: "14px", color: "#666" }}>
               Apresente este código ao profissional de saúde no momento da vacinação.
             </p>
           </>

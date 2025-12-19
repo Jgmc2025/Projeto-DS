@@ -12,16 +12,16 @@ function Prelogin() {
     <>
       {/*Tela inicial*/}
       <div className="logo">
-        <img src={logo} className="logo-name" />
+        <img src={logo} className="logo-nome" />
         <h1>Capivac</h1>
       </div>
-      <p className="subtitle">
+      <p className="subtitulo">
         Sistema de incentivo à vacinação no Recife
         <br />
         Acessível, rápido e seguro
       </p>
 
-      <button class="button" onClick={Acessar}>
+      <button class="btn" onClick={Acessar}>
         Acessar Plataforma
       </button>
 

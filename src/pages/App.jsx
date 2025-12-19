@@ -9,7 +9,6 @@ import MenuComum from "./menu-comum";
 import Cards from "./vacinas-disponiveis";
 import Ranking from "./ListaRanking";
 import AtualizarDados from "./atualizar-dados";
-import CadastrarVacina from "./cadastrar-vacina"
 
 function App() {
   return (
@@ -20,7 +19,6 @@ function App() {
       <Route path="/qrcode-gen" element={<Gerar />} />
       <Route path="/mapa" element={<Local />} />
       <Route path="/menu-funcionario" element={<MenuFuncionario />} />
-      <Route path="/cadastrar-vacina" element={<CadastrarVacina/>}/>
       <Route path="/menu-comum" element={<MenuComum />} />
       <Route path="atualizar-dados" element={<AtualizarDados/>} />
       <Route path="/vacinas-disponiveis" element={<Cards />} />
