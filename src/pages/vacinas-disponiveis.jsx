@@ -1,131 +1,44 @@
-import '../css/tela-vacinas.css'
-import Card from '../components/vacina'
-import NavBar from '../components/navbar'
+import "../css/vacina.css";
+import NavBar from "../components/navbar";
+import CardVacina from "../components/vacina";
 
-function Cards() {
-    return(
-        <>
-            <NavBar/>
+function TelaVacinas() {
+  // Dados
+  const listaVacinas = [
+    { id: 1, nome: "Gripe", pontos: 100 },
+    { id: 2, nome: "Poliomielite", pontos: 170 },
+    { id: 3, nome: "Tetraviral", pontos: 150 },
+    { id: 4, nome: "Rotavírus", pontos: 150 },
+    { id: 5, nome: "Hepatite B", pontos: 150 },
+    { id: 6, nome: "Febre Amarela", pontos: 150 },
+    { id: 7, nome: "Sarampo", pontos: 120 },
+    { id: 8, nome: "COVID-19", pontos: 200 },
+    { id: 9, nome: "Tétano", pontos: 1000 },
+    { id: 10, nome: "BCG", pontos: 150 },
+    { id: 11, nome: "HPV", pontos: 500 },
+    // Novas vacinas <-
+  ];
 
-            <div className='msg-div'>
-                <h1>Histórico de Vacinas Tomadas</h1>
-            </div>
+  return (
+    <>
+      <NavBar />
 
-            <div className='extrato-rolldown-div'>  
+      <div className="msg-div">
+        <h1>Histórico de Vacinas Tomadas</h1>
+      </div>
 
-                {/* Card 1 */}
-                <div className='extrato-div'>
-                    <div className='extrato-top'>
-                        <strong>Vacina Registrada:</strong>
-                        <span>Capibas: 50</span>
-                    </div>
-                    <div className='extrato-bottom'>
-                        Gripe
-                    </div>
-                </div>
-
-                {/* Card 2 */}
-                <div className='extrato-div'>
-                    <div className='extrato-top'>
-                        <strong>Vacina Registrada:</strong>
-                        <span>Capibas: 100</span>
-                    </div>
-                    <div className='extrato-bottom'>
-                        Poliomielite
-                    </div>
-                </div>
-
-                {/* Card 3 */}
-                <div className='extrato-div'>
-                    <div className='extrato-top'>
-                        <strong>Vacina Registrada:</strong>
-                        <span>Capibas: 150</span>
-                    </div>
-                    <div className='extrato-bottom'>
-                        Tetraviral
-                    </div>
-                </div>
-
-                {/* Card 4 */}
-                <div className='extrato-div'>
-                    <div className='extrato-top'>
-                        <strong>Vacina Registrada:</strong>
-                        <span>Capibas: 150</span>
-                    </div>
-                    <div className='extrato-bottom'>
-                        Rotavírus
-                    </div>
-                </div>
-
-                {/* Card 5 */}
-                <div className='extrato-div'>
-                    <div className='extrato-top'>
-                        <strong>Vacina Registrada:</strong>
-                        <span>Capibas: 150</span>
-                    </div>
-                    <div className='extrato-bottom'>
-                        Rotavírus
-                    </div>
-                </div>
-
-                {/* Card 6 */}
-                <div className='extrato-div'>
-                    <div className='extrato-top'>
-                        <strong>Vacina Registrada:</strong>
-                        <span>Capibas: 150</span>
-                    </div>
-                    <div className='extrato-bottom'>
-                        Rotavírus
-                    </div>
-                </div>
-
-                {/* Card 7 */}
-                <div className='extrato-div'>
-                    <div className='extrato-top'>
-                        <strong>Vacina Registrada:</strong>
-                        <span>Capibas: 150</span>
-                    </div>
-                    <div className='extrato-bottom'>
-                        Rotavírus
-                    </div>
-                </div>
-
-                {/* Card 8 */}
-                <div className='extrato-div'>
-                    <div className='extrato-top'>
-                        <strong>Vacina Registrada:</strong>
-                        <span>Capibas: 150</span>
-                    </div>
-                    <div className='extrato-bottom'>
-                        Rotavírus
-                    </div>
-                </div>
-
-                {/* Card 9 */}
-                <div className='extrato-div'>
-                    <div className='extrato-top'>
-                        <strong>Vacina Registrada:</strong>
-                        <span>Capibas: 150</span>
-                    </div>
-                    <div className='extrato-bottom'>
-                        Rotavírus
-                    </div>
-                </div>
-
-                {/* Card 10 */}
-                <div className='extrato-div'>
-                    <div className='extrato-top'>
-                        <strong>Vacina Registrada:</strong>
-                        <span>Capibas: 150</span>
-                    </div>
-                    <div className='extrato-bottom'>
-                        Rotavírus
-                    </div>
-                </div>
-
-            </div> 
-        </>
-    )
+      <div className="extrato-rolldown-div">
+        {/* loop */}
+        {listaVacinas.map((vacina) => (
+          <CardVacina
+            key={vacina.id}
+            nome={vacina.nome}
+            pontos={vacina.pontos}
+          />
+        ))}
+      </div>
+    </>
+  );
 }
 
-export default Cards
+export default TelaVacinas;

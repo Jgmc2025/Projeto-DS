@@ -1,11 +1,15 @@
-import '../css/vacina.css'
+import "../css/tela-vacinas.css";
 
-function Card(propriedade){
-    return(
-        <>
-            <div className='card-vacina'><h2>Vacina da {propriedade.nome}</h2>
-            <p className='texto-vacina'>{propriedade.texto}</p></div>
-        </>
-    )
-}
-export default Card;
+const CardVacina = ({ nome, pontos }) => {
+  return (
+    <div className="extrato-div">
+      <div className="extrato-top">
+        <strong>Vacina Registrada:</strong>
+        <span>Capibas: {pontos}</span>
+      </div>
+      <div className="extrato-bottom">{nome}</div>
+    </div>
+  );
+};
+
+export default CardVacina;
