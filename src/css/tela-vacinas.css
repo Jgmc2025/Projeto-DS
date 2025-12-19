@@ -1,19 +1,35 @@
 .msg-div {
-    position: fixed;
-    display: flex;
-    top: 40px;        
-    left: 50%;        
+    margin-top: 50px;
+    margin-left: 50%;
+    width: 90%;
+    display: flex;                
     transform: translateX(-50%); 
+    font-size: 22px;
     text-align: center;
+    z-index: 10;
+}
+
+:root {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.extrato-rolldown-div {
+    width: 50vw; 
+    margin: 0; 
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    padding-bottom: 20px;
 }
 
 .extrato-div {
+    padding: 5px 10px 10px 10px; 
     border: 2px solid #a4d7a7;
-    padding: 5px 10px 10px 10px;
     border-radius: 12px;
-    margin-bottom: 20px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-
+    background-color: white;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -26,6 +42,7 @@
     width: 100%;
 }
 
+
 .extrato-bottom {
     font-size: 18px;
     color: #555;
@@ -33,9 +50,9 @@
     padding-left: 10px;
 }
 
-.extrato-rolldown-div {
-    width: 50vw;       
-    overflow-y: auto; 
-    margin-top: 200px;
-    padding-right: 10px;
+@media (max-width: 768px) {
+    .extrato-rolldown-div {
+        width: 80%;
+        margin: auto;
+    }
 }
