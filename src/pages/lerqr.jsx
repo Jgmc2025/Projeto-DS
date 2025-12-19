@@ -1,18 +1,39 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import jsQR from 'jsqr'; // Importando a biblioteca compatível
 import NavBar from '../components/navbar';
 import ModalConfirmacao from "../components/modalConfirmacao";
+import logo from "../assets/logo.png";
 
-function Ler({ onSucesso }) {
-  const [data, setData] = useState('Aponte a câmera para um QR Code');
+function Ler() {
+  const navigate = useNavigate();
+  const [data, setData] = useState('Aponte a câmera para o QR Code');
+  const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  
+  // Estados do form
+  const [usuarioId, setUsuarioId] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [vacinaId, setVacinaId] = useState("");
+  const [local, setLocal] = useState("Unidade de Saúde Recife");
+  const [vacinasDisponiveis, setVacinasDisponiveis] = useState([]);
+
   const videoRef = useRef(null);
+  const canvasRef = useRef(document.createElement("canvas")); // Canvas invisível para processar imagem
   const streamRef = useRef(null);
   const requestRef = useRef(null);
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/api/vaccine", { withCredentials: true })
+      .then(res => setVacinasDisponiveis(res.data.vaccines))
+      .catch(err => console.error("Erro ao carregar vacinas", err));
+  }, []);
 
   const stopCamera = () => {
     if (streamRef.current) {
       streamRef.current.getTracks().forEach(track => track.stop());
       streamRef.current = null;
-      setData('Câmera parada.');
     }
     if (requestRef.current) {
       cancelAnimationFrame(requestRef.current);
@@ -21,7 +42,6 @@ function Ler({ onSucesso }) {
   };
 
   const startScan = async () => {
-
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: 'environment' }
@@ -30,117 +50,124 @@ function Ler({ onSucesso }) {
 
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
-        videoRef.current.play().catch(e => console.error("Erro ao iniciar play", e));
+        videoRef.current.setAttribute("playsinline", true); // necessário para iOS
+        videoRef.current.play();
       }
-      const detect = async () => {
-        if (!videoRef.current || videoRef.current.readyState < 2) {
-          requestRef.current = requestAnimationFrame(detect);
-          return;
-        }
 
-        try {
-          const barcodes = await barcodeDetector.detect(videoRef.current);
+      const tick = () => {
+        if (videoRef.current && videoRef.current.readyState === videoRef.current.HAVE_ENOUGH_DATA) {
+          const canvas = canvasRef.current;
+          const video = videoRef.current;
           
-          if (barcodes.length > 0) {
-            const decodedText = barcodes[0].rawValue;
-            setData(`Lido: ${decodedText}`);
+          canvas.height = video.videoHeight;
+          canvas.width = video.videoWidth;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          
+          const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const code = jsQR(imageData.data, imageData.width, imageData.height, {
+            inversionAttempts: "dontInvert",
+          });
 
-            if (decodedText === 'Validado com sucesso! \nVocê ganhou 250 Capibas.') {
-              setData(`Sucesso! ${decodedText}`);
-            
-              stopCamera();
-
-              if (onSucesso) {
-                onSucesso(decodedText);
+          if (code) {
+            try {
+              const userObj = JSON.parse(code.data);
+              if (userObj.id && userObj.cpf) {
+                setUsuarioId(userObj.id);
+                setCpf(userObj.cpf);
+                setData(`Paciente: ${userObj.nome}`);
+                setIsOpen(true);
+                stopCamera();
+                return; // Sai do loop
               }
-            } else {
-              setData('QR Code inválido. Tente novamente.');
-              requestRef.current = requestAnimationFrame(detect);
+            } catch (e) {
+              setData("QR Code inválido.");
             }
-          } else {
-            requestRef.current = requestAnimationFrame(detect);
           }
-        }catch (e) {
-          console.error('Erro na detecção:', e);
         }
+        requestRef.current = requestAnimationFrame(tick);
       };
-      requestRef.current = requestAnimationFrame(detect);
+      requestRef.current = requestAnimationFrame(tick);
 
     } catch (err) {
-      console.error('Erro ao acessar a câmera:', err);
-      if (err.name === 'NotAllowedError') {
-        setData('Você precisa dar permissão para usar a câmera.');
-      } else {
-        setData('Erro ao iniciar a câmera.');
-      }
+      setData('Erro ao acessar a câmera.');
     }
   };
 
   useEffect(() => {
-    startScan();
+    if (!isOpen) startScan();
+    return () => stopCamera();
+  }, [isOpen]);
 
-    return () => {
-      stopCamera();
-    };
-  }, [onSucesso]); 
-  const [isOpen, setIsOpen] = useState(false);
-  const nome = "Ítalo Oliveira Borges";
-  const cpf = "10294182479";
+  const handleSubmitVacina = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await axios.post("http://localhost:3000/api/vaccinate-user", {
+        usuarioId: Number(usuarioId),
+        cpf: cpf,
+        vacinaId: Number(vacinaId),
+        dataAplicacao: new Date().toISOString(),
+        localAplicacao: local
+      }, { withCredentials: true });
+      alert("Vacinação registrada!");
+      setIsOpen(false);
+      navigate("/menu-funcionario");
+    } catch (error) {
+      alert(error.response?.data?.message || "Erro no registro.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
       <NavBar />
-      <div className="p-4 w-full max-w-md mx-auto">
-        <video 
-          ref={videoRef} 
-          playsInline 
-          autoPlay
-          muted
-          className="w-full h-auto rounded-lg border"
-          style={{ transform: 'scaleX(-1)', width: '80%' }}
-        ></video>
-        <p className="mt-4 text-center font-medium">{data}</p>
+      <div className="area-logo" style={{ marginTop: '20px' }}>
+        <img src={logo} width="80" height="80" alt="logo" />
+        <h1>Capivacc Scanner</h1>
       </div>
-        <p>Ou insira as informações do usuário manualmente</p>
-        <button onClick={() => setIsOpen(true)}>Inserir</button>
-        <ModalConfirmacao open={isOpen} onClose = {() => setIsOpen(false)}>
-          <form style={{display: "flex", flexDirection: "column", justifyContent: "center", width: "200px", gap: "20px"}}>
-            <h2 style={{textAlign: "center"}}>Validar Vacina</h2>
-            <div style={{ display: "flex", flexDirection: "column"}}>
-              <h3 style={{margin: 0}}>Usuário</h3>
-              <input type="text" style={{margin: 0, backgroundColor: "white", color: "black", borderRadius: "5px"}}></input>
-            </div>
-            <div>
-              <h3 style={{margin: 0}}>CPF</h3>
-              <input type="text" style={{margin: 0, backgroundColor: "white", color: "black", borderRadius: "5px"}}></input>
-            </div>
-              <div style={{ display: "flex", flexDirection: "column", }}>
-                <h3 style={{margin: 0, }}>Vacina</h3>
-                <select required name="vacina" style={{margin: 0, backgroundColor: "white", color: "black", height: "30px", borderRadius: "5px"}}>
-                  <option value="bcg">BCG</option>
-                  <option value="hep b">Hepatite B</option>
-                  <option value="penta">Penta</option>
-                  <option value="polio">Pólio inativada</option>
-                  <option value="rotavirus">Rotavírus</option>
-                  <option value="pneumo 10">Pneumo 10</option>
-                  <option value="meningo c">Meningo C</option>
-                  <option value="febre amarela">Febre Amarela</option>
-                  <option value="triplice viral">Tríplice viral</option>
-                  <option value="tetra viral">Tetra viral</option>
-                  <option value="dtp">DTP</option>
-                  <option value="varicela">Varicela</option>
-                  <option value="dt">dT</option>
-                  <option value="meningococica acwy">Meningocócica ACWY</option>
-                  <option value="hpv quadrivalente">HPV quadrivalente</option>
-                  <option value="dtpa">dTpa</option>
-                  <option value="covid-19">Covid-19</option>
-                  <option value="pneumo 23">Pneumo 23</option>
-                </select>
-              </div>
-              <button style={{marginBottom: "20px", backgroundColor: "white", borderColor: "blue", color: "black", height: "35px", marginTop: "10px"}} type="submit">Validar</button>
-            </form>
-        </ModalConfirmacao>
-      </>
+
+      <div className="p-4 w-full max-w-md mx-auto" style={{ textAlign: 'center' }}>
+        <div style={{ position: 'relative', borderRadius: '15px', overflow: 'hidden', border: '4px solid #a4d7a7' }}>
+          <video 
+            ref={videoRef} 
+            style={{ width: '100%', maxWidth: '400px', backgroundColor: '#000' }}
+          ></video>
+          {/* Overlay visual para ajudar o usuário */}
+          <div style={{
+            position: 'absolute', top: '50%', left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '200px', height: '200px',
+            border: '2px solid rgba(255,255,255,0.5)',
+            borderRadius: '10px', pointerEvents: 'none'
+          }}></div>
+        </div>
+        <p style={{ marginTop: '15px', fontWeight: 'bold' }}>{data}</p>
+        
+        <button 
+          className="entrar-btn" 
+          onClick={() => { stopCamera(); setIsOpen(true); }}
+          style={{ backgroundColor: '#7ec8e3', width: '220px', marginTop: '20px' }}
+        >
+          Inserir Manualmente
+        </button>
+      </div>
+
+      <ModalConfirmacao open={isOpen} onClose={() => setIsOpen(false)}>
+        <form onSubmit={handleSubmitVacina} style={{ display: "flex", flexDirection: "column", width: "280px", gap: "15px" }}>
+          <h2 style={{ textAlign: "center" }}>Validar Vacina</h2>
+          <input required placeholder="ID do usuario (Ver na pagina inicial do usuario)" type="number" value={usuarioId} onChange={(e)=>setUsuarioId(e.target.value)} className="senha" />
+          <input required placeholder="CPF" value={cpf} onChange={(e)=>setCpf(e.target.value)} className="senha" />
+          <select required className="senha" value={vacinaId} onChange={(e)=>setVacinaId(e.target.value)}>
+            <option value="">Selecione a vacina</option>
+            {vacinasDisponiveis.map(v => <option key={v.id} value={v.id}>{v.nome}</option>)}
+          </select>
+          <input placeholder="Local" value={local} onChange={(e)=>setLocal(e.target.value)} className="senha" />
+          <button className="entrar-btn" type="submit" disabled={loading}>{loading ? "Salvando..." : "Validar"}</button>
+        </form>
+      </ModalConfirmacao>
+    </>
   );
 }
 
